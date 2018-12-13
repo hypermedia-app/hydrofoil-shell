@@ -10,7 +10,7 @@ import { microTask } from '@polymer/polymer/lib/utils/async';
 import { Debouncer } from '@polymer/polymer/lib/utils/debounce';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element';
 import { Hydra } from 'alcaeus';
-import css from './style.pcss';
+// @ts-ignore
 import template from './template.html';
 import '@polymer/app-layout';
 import '@polymer/iron-icon/iron-icon';
@@ -22,6 +22,7 @@ import '@polymer/paper-styles/paper-styles';
 import '@polymer/paper-styles/typography';
 import { Helpers } from 'LdNavigation/ld-navigation';
 import '../loading-overlay/loading-overlay';
+import { query } from '@polymer/decorators/lib/decorators';
 export default class HydrofoilShell extends DeclarativeEventListeners(PolymerElement) {
     constructor() {
         super(...arguments);
@@ -33,74 +34,70 @@ export default class HydrofoilShell extends DeclarativeEventListeners(PolymerEle
         return !!this.model && !!this.model.apiDocumentation;
     }
     get displayedModel() {
-        return this.currentModel.collection || this.currentModel;
+        return this.currentModel['collection'] || this.currentModel;
     }
     static get template() {
-        return html([`<style>${css}</style> ${template}`]);
+        return html([`${template}`]);
     }
     hasPreviousModel(modelHistory) {
         return modelHistory.base.length > 0;
     }
-    connectedCallback() {
-        super.connectedCallback();
-        import('../../entrypoint-selector');
-    }
     showDocs() {
-        this.$.documentation.open();
+        this.documentationDrawer.open();
     }
     load() {
-        this._setIsLoading(true);
-        Helpers.fireNavigation(this, this.$.resource.value);
+        this._setProperty('isLoading', true);
+        Helpers.fireNavigation(this, this.url);
     }
     showModel(ev) {
         this.push('_modelHistory', this.currentModel);
         this.currentModel = ev.detail;
     }
     async showDocumentation(e) {
-        await import('../../api-documentation/viewer/viewer');
-        this.$.apiDocumentation.selectClass(e.detail.classId);
-        this.showDocs();
+        /*await import('../../api-documentation/viewer/viewer')
+
+        this.$.apiDocumentation.selectClass(e.detail.classId)
+        this.showDocs()*/
         e.stopPropagation();
     }
     showResource(e) {
         this.currentModel = e.detail.resource;
     }
     async showResourceJson(e) {
-        await import('../../resource-views/resource-json');
-        this.$.source.resource = e.detail.resource;
-        this.$.source.show();
+        /*await import('../../resource-views/resource-json')
+
+        this.$.source.resource = e.detail.resource
+        this.$.source.show()*/
     }
     hideOperationForm() {
         this.state = this.prevState || 'ready';
     }
     async loadResource(value) {
-        await import('../../entrypoint-selector');
+        // await import('../../entrypoint-selector')
         try {
             const hr = await Hydra.loadResource(value);
             const res = hr.root;
             this.model = res;
             this.currentModel = res;
             this.state = 'loaded';
-            this._setIsLoading(false);
+            this._setProperty('isLoading', false);
             this._loadOutlineElement();
         }
         catch (err) {
-            this._setLastError(err);
+            this._setProperty('lastError', err);
             this.state = 'error';
-            this._setIsLoading(false);
+            this._setProperty('isLoading', false);
         }
     }
     _loadOutlineElement() {
-        import('../../side-menu/side-menu');
+        //import('../../side-menu/side-menu')
     }
     urlChanged(e) {
         Debouncer.debounce(null, microTask, () => {
             if (e.detail.value !== '/') {
-                this.$.resource.value = e.detail.value;
-                if (!this.$.resource.invalid) {
-                    this._setIsLoading(true);
-                    this.loadResource(this.$.resource.value);
-                }
+                this.url = e.detail.value;
+                this._setProperty('isLoading', true);
+                this.loadResource(this.url);
             }
         });
     }
@@ -111,7 +108,7 @@ export default class HydrofoilShell extends DeclarativeEventListeners(PolymerEle
     }
     _loadDocElements(e) {
         if (e.detail.value === true) {
-            import('../../api-documentation/viewer/viewer');
+            // import('../../api-documentation/viewer/viewer')
         }
     }
     howOperationForm(e) {
@@ -148,6 +145,9 @@ __decorate([
 __decorate([
     property({ type: Boolean, readOnly: true, notify: true })
 ], HydrofoilShell.prototype, "isLoading", void 0);
+__decorate([
+    query('#documentation')
+], HydrofoilShell.prototype, "documentationDrawer", void 0);
 __decorate([
     listen('show-class-documentation', document)
 ], HydrofoilShell.prototype, "showDocumentation", null);

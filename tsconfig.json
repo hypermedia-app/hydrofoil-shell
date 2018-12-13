@@ -5,6 +5,6 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "declaration": true,
-    "declarationDir": "types"
+    "noEmitOnError": false
   }
 }

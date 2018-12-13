@@ -14,7 +14,7 @@ export default class HydrofoilAddressBar extends PolymerElement {
     @query('#resource')
     public urlInput: PaperInputElement
 
-    @property({ type: String})
+    @property({ type: String, notify: true })
     public url: string
 
     static get template() {

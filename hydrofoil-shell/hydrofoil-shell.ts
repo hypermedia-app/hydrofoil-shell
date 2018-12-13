@@ -6,7 +6,7 @@ import { IHydraResource } from 'alcaeus/types/Resources'
 
 import { html, PolymerElement } from '@polymer/polymer/polymer-element'
 import {Hydra} from 'alcaeus'
-import css from './style.pcss'
+// @ts-ignore
 import template from './template.html'
 
 import '@polymer/app-layout'
@@ -20,11 +20,12 @@ import '@polymer/paper-styles/typography'
 
 import {Helpers} from 'LdNavigation/ld-navigation'
 import '../loading-overlay/loading-overlay'
+import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer'
+import {query} from '@polymer/decorators/lib/decorators'
 
 type ConsoleState = 'ready' | 'loaded' | 'error' | 'operation'
 
 export default abstract class HydrofoilShell extends DeclarativeEventListeners(PolymerElement) {
-
     @computed('model')
     get hasApiDocumentation() {
         return !!this.model && !!this.model.apiDocumentation
@@ -32,11 +33,11 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     @computed('currentModel')
     get displayedModel(): IHydraResource {
-        return this.currentModel.collection || this.currentModel
+        return this.currentModel['collection'] || this.currentModel
     }
 
     static get template() {
-        return html([`<style>${css}</style> ${template}`] as any)
+        return html([`${template}`] as any)
     }
 
     @property({ type: Object })
@@ -57,24 +58,22 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
     @property({ type: Boolean, readOnly: true, notify: true })
     private readonly isLoading: boolean = false
 
+    @query('#documentation')
+    private documentationDrawer: AppDrawerElement
+
     private prevState: ConsoleState
 
     public hasPreviousModel(modelHistory: any) {
         return modelHistory.base.length > 0
     }
 
-    public connectedCallback() {
-        super.connectedCallback()
-        import('../../entrypoint-selector')
-    }
-
     public showDocs() {
-        this.$.documentation.open()
+        this.documentationDrawer.open()
     }
 
     public load() {
-        this._setIsLoading(true)
-        Helpers.fireNavigation(this, this.$.resource.value)
+        this._setProperty('isLoading', true)
+        Helpers.fireNavigation(this, this.url)
     }
 
     public showModel(ev: CustomEvent) {
@@ -84,10 +83,10 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     @listen('show-class-documentation', document)
     public async showDocumentation(e: CustomEvent) {
-        await import('../../api-documentation/viewer/viewer')
+        /*await import('../../api-documentation/viewer/viewer')
 
         this.$.apiDocumentation.selectClass(e.detail.classId)
-        this.showDocs()
+        this.showDocs()*/
 
         e.stopPropagation()
     }
@@ -99,10 +98,10 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     @listen('show-resource-json', document)
     public async showResourceJson(e: CustomEvent) {
-        await import('../../resource-views/resource-json')
+        /*await import('../../resource-views/resource-json')
 
         this.$.source.resource = e.detail.resource
-        this.$.source.show()
+        this.$.source.show()*/
     }
 
     public hideOperationForm() {
@@ -110,7 +109,7 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
     }
 
     private async loadResource(value: string) {
-        await import('../../entrypoint-selector')
+        // await import('../../entrypoint-selector')
 
         try {
             const hr = await Hydra.loadResource(value)
@@ -119,18 +118,18 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
             this.model = res
             this.currentModel = res
             this.state = 'loaded'
-            this._setIsLoading(false)
+            this._setProperty('isLoading', false)
 
             this._loadOutlineElement()
         } catch (err) {
-            this._setLastError(err)
+            this._setProperty('lastError', err)
             this.state = 'error'
-            this._setIsLoading(false)
+            this._setProperty('isLoading', false)
         }
     }
 
     private _loadOutlineElement() {
-        import('../../side-menu/side-menu')
+        //import('../../side-menu/side-menu')
     }
 
     private urlChanged(e: CustomEvent) {
@@ -139,11 +138,9 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
             microTask,
             () => {
                 if (e.detail.value !== '/') {
-                    this.$.resource.value = e.detail.value
-                    if (!this.$.resource.invalid) {
-                        this._setIsLoading(true)
-                        this.loadResource(this.$.resource.value)
-                    }
+                    this.url = e.detail.value
+                    this._setProperty('isLoading', true)
+                    this.loadResource(this.url)
                 }
             })
     }
@@ -156,7 +153,7 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     private _loadDocElements(e: CustomEvent) {
         if (e.detail.value === true) {
-            import('../../api-documentation/viewer/viewer')
+            // import('../../api-documentation/viewer/viewer')
         }
     }
 

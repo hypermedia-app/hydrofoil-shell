@@ -1,14 +1,18 @@
 {
   "name": "@hydrofoil/hydrofoil-shell",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "A base for a Hydra-driven application",
   "main": "index.js",
   "repository": "https://github.com/wikibus/hydrofoil-shell",
   "author": "tpluscode",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
+  "files": [
+    "**/*.js"
+  ],
   "devDependencies": {
     "tslint": "^5.11.0",
     "typescript": "^3.2.2"
