@@ -19,6 +19,7 @@ import '@polymer/iron-pages/iron-pages';
 import '@polymer/paper-spinner/paper-spinner';
 import '@polymer/paper-styles/default-theme';
 import '@polymer/paper-styles/paper-styles';
+import '@polymer/polymer/lib/elements/dom-if';
 import '@polymer/paper-styles/typography';
 import { Helpers } from 'LdNavigation/ld-navigation';
 import '../loading-overlay/loading-overlay';
@@ -142,6 +143,9 @@ __decorate([
 __decorate([
     property({ type: String, notify: true })
 ], HydrofoilShell.prototype, "state", void 0);
+__decorate([
+    property({ type: Boolean })
+], HydrofoilShell.prototype, "showAddressBar", void 0);
 __decorate([
     property({ type: Boolean, readOnly: true, notify: true })
 ], HydrofoilShell.prototype, "isLoading", void 0);

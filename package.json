@@ -12,6 +12,7 @@
   },
   "files": [
     "**/*.js",
+    "**/*.d.ts",
     "**/template.html"
   ],
   "devDependencies": {

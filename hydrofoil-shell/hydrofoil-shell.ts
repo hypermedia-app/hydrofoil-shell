@@ -16,6 +16,7 @@ import '@polymer/iron-pages/iron-pages'
 import '@polymer/paper-spinner/paper-spinner'
 import '@polymer/paper-styles/default-theme'
 import '@polymer/paper-styles/paper-styles'
+import '@polymer/polymer/lib/elements/dom-if'
 import '@polymer/paper-styles/typography'
 
 import {Helpers} from 'LdNavigation/ld-navigation'
@@ -54,6 +55,9 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     @property({ type: String, notify: true })
     public state: ConsoleState = 'ready'
+
+    @property({ type: Boolean })
+    protected showAddressBar: boolean
 
     @property({ type: Boolean, readOnly: true, notify: true })
     private readonly isLoading: boolean = false

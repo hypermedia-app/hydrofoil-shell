@@ -81,9 +81,13 @@
                                    on-tap="showDocs"></paper-icon-button>
             </app-toolbar>
 
-            <app-toolbar hidden>
-                <hydrofoil-address-bar url="{{url}}"></hydrofoil-address-bar>
-            </app-toolbar>
+            <dom-if id="[[showAddressBar]]">
+                <template>
+                    <app-toolbar>
+                        <hydrofoil-address-bar url="{{url}}"></hydrofoil-address-bar>
+                    </app-toolbar>
+                </template>
+            </dom-if>
         </app-header>
 
         <iron-pages attr-for-selected="data-state" selected$="[[state]]">
