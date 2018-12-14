@@ -6,12 +6,7 @@
     }
 </style>
 
-<paper-item on-tap="toggle">
-    <paper-item-body>Main menu</paper-item-body>
-    <paper-icon icon="[[icon]]" alt="[[openCloseText]]">
-    </paper-icon>
-</paper-item>
-<iron-collapse opened="[[opened]]">
+<paper-collapse-item header="Main menu" icon="[[icon]]">
     <paper-listbox>
         <dom-repeat items="[[links]]" as="link">
             <template>
@@ -19,4 +14,4 @@
             </template>
         </dom-repeat>
     </paper-listbox>
-</iron-collapse>
+</paper-collapse-item>

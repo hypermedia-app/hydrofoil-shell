@@ -3,11 +3,10 @@ import {html, PolymerElement} from '@polymer/polymer'
 import {HydraResource} from 'alcaeus/types/Resources'
 import {Helpers} from 'LdNavigation/ld-navigation'
 
-import '@polymer/iron-collapse'
-import '@polymer/paper-icon'
 import '@polymer/paper-item'
 import '@polymer/paper-listbox'
 import '@polymer/polymer/lib/elements/dom-repeat'
+import 'paper-collapse-item/paper-collapse-item'
 
 // @ts-ignore
 import template from './template.html'
@@ -22,11 +21,6 @@ export default class extends PolymerElement {
 
     @property({ type: Boolean })
     public opened: boolean = true
-
-    @computed('opened')
-    get openCloseText() {
-        return this.opened ? 'close' : 'open'
-    }
 
     @computed('opened')
     get icon() {
