@@ -1,11 +1,10 @@
-import { computed, customElement, listen, property } from '@polymer/decorators'
+import { computed, customElement, listen, observe, property, query } from '@polymer/decorators'
 import { DeclarativeEventListeners } from '@polymer/decorators/lib/declarative-event-listeners.js'
 import { microTask } from '@polymer/polymer/lib/utils/async'
 import { Debouncer } from '@polymer/polymer/lib/utils/debounce'
 import { IHydraResource } from 'alcaeus/types/Resources'
 
 import { html, PolymerElement } from '@polymer/polymer/polymer-element'
-import {Hydra} from 'alcaeus'
 // @ts-ignore
 import template from './template.html'
 
@@ -22,7 +21,6 @@ import '@polymer/paper-styles/typography'
 import {Helpers} from 'LdNavigation/ld-navigation'
 import '../loading-overlay/loading-overlay'
 import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer'
-import {query} from '@polymer/decorators/lib/decorators'
 
 type ConsoleState = 'ready' | 'loaded' | 'error' | 'operation'
 
@@ -113,10 +111,10 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
     }
 
     private async loadResource(value: string) {
-        // await import('../../entrypoint-selector')
+        const alcaeus = await import('alcaeus')
 
         try {
-            const hr = await Hydra.loadResource(value)
+            const hr = await alcaeus.Hydra.loadResource(value)
             const res = hr.root
 
             this.model = res
@@ -134,6 +132,13 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     private _loadOutlineElement() {
         //import('../../side-menu/side-menu')
+    }
+
+    @observe('showAddressBar')
+    private showAddressBarChanges(showAddressBar) {
+        if (showAddressBar) {
+            import('../hydrofoil-address-bar')
+        }
     }
 
     private urlChanged(e: CustomEvent) {
