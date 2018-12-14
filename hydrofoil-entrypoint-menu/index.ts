@@ -1,5 +1,7 @@
 import {computed, customElement, observe, property} from '@polymer/decorators'
 import {html, PolymerElement} from '@polymer/polymer'
+import {animationFrame} from '@polymer/polymer/lib/utils/async'
+import {Debouncer} from '@polymer/polymer/lib/utils/debounce'
 import {HydraResource} from 'alcaeus/types/Resources'
 import {Helpers} from 'LdNavigation/ld-navigation'
 
@@ -20,15 +22,24 @@ export default class extends PolymerElement {
     public readonly entrypoint: HydraResource
 
     @property({ type: Boolean })
-    public opened: boolean = true
+    public opened: boolean = false
 
-    @computed('opened')
-    get icon() {
-        return this.opened ? 'expand-less' : 'expand-more'
+    @computed('entrypoint')
+    get links() {
+        return this.entrypoint.apiDocumentation
+            .getProperties(this.entrypoint.types[0])
+            .filter((sp) => {
+                return sp.property.types.indexOf('http://www.w3.org/ns/hydra/core#Link') !== -1
+            })
     }
 
-    private toggle() {
-        this.opened = !this.opened
+    @observe('links')
+    private openWhenLoaded(newLinks, oldLinks) {
+        Debouncer.debounce(null, animationFrame, () => {
+            if (!oldLinks) {
+                this.opened = true
+            }
+        })
     }
 
     private load(e: any) {

@@ -37,6 +37,7 @@
     "@polymer/polymer": "^3.1.0",
     "LdNavigation": "git+https://github.com/tpluscode/ld-navigation.git",
     "alcaeus": "^0.4.4",
+    "core-decorators": "^0.20.0",
     "lit-any": "^0.6.0",
     "paper-collapse-item": "^4.0.5"
   }

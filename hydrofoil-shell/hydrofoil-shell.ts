@@ -123,7 +123,7 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
         this.state = this.prevState || 'ready'
     }
 
-    @observe('resource')
+    @observe('currentModel')
     private getEntrypoint(resource: HydraResource) {
         resource.apiDocumentation.loadEntrypoint()
             .then((entrypoint) => {

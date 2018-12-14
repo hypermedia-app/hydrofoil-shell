@@ -1,12 +1,12 @@
 <style>
     :host { display: block }
 
-    paper-item {
+    paper-item, paper-collapse-item {
         cursor: pointer;
     }
 </style>
 
-<paper-collapse-item header="Main menu" icon="[[icon]]">
+<paper-collapse-item header="Main menu" opened="{{opened}}">
     <paper-listbox>
         <dom-repeat items="[[links]]" as="link">
             <template>
