@@ -122,16 +122,13 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
             this.state = 'loaded'
             this._setProperty('isLoading', false)
 
-            this._loadOutlineElement()
+            import('../hydrofoil-entrypoint-menu')
+            import('lit-any/elements/lit-view')
         } catch (err) {
             this._setProperty('lastError', err)
             this.state = 'error'
             this._setProperty('isLoading', false)
         }
-    }
-
-    private _loadOutlineElement() {
-        //import('../../side-menu/side-menu')
     }
 
     @observe('showAddressBar')
