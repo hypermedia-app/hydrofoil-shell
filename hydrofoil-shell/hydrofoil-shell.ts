@@ -149,12 +149,6 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
             })
     }
 
-    private loadOnEnter(e: KeyboardEvent) {
-        if (e.keyCode === 13) {
-            this.load()
-        }
-    }
-
     private _loadDocElements(e: CustomEvent) {
         if (e.detail.value === true) {
             // import('../../api-documentation/viewer/viewer')
