@@ -1,5 +1,22 @@
-<paper-listbox>
-    <dom-repeat items="[[links]]" as="link">
-        <paper-item>[[link.title]]</paper-item>
-    </dom-repeat>
-</paper-listbox>
+<style>
+    :host { display: block }
+
+    paper-item {
+        cursor: pointer;
+    }
+</style>
+
+<paper-item on-tap="toggle">
+    <paper-item-body>Main menu</paper-item-body>
+    <paper-icon icon="[[icon]]" alt="[[openCloseText]]">
+    </paper-icon>
+</paper-item>
+<iron-collapse opened="[[opened]]">
+    <paper-listbox>
+        <dom-repeat items="[[links]]" as="link">
+            <template>
+                <paper-item on-tap="load">[[link.title]]</paper-item>
+            </template>
+        </dom-repeat>
+    </paper-listbox>
+</iron-collapse>

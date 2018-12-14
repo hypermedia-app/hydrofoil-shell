@@ -1,8 +1,10 @@
 import {computed, customElement, observe, property} from '@polymer/decorators'
 import {html, PolymerElement} from '@polymer/polymer'
 import {HydraResource} from 'alcaeus/types/Resources'
+import {Helpers} from 'LdNavigation/ld-navigation'
 
 import '@polymer/iron-collapse'
+import '@polymer/paper-icon'
 import '@polymer/paper-item'
 import '@polymer/paper-listbox'
 import '@polymer/polymer/lib/elements/dom-repeat'
@@ -15,30 +17,31 @@ export default class extends PolymerElement {
     @property({ type: Object })
     public resource: HydraResource
 
-    @property({ type: Object, readOnly: true })
+    @property({ type: Object })
     public readonly entrypoint: HydraResource
 
-    @computed('entrypoint')
-    get links() {
-        return this.entrypoint.apiDocumentation
-            .getProperties(this.entrypoint.types[0])
-            .filter((sp) => {
-                return sp.property.types.indexOf('http://www.w3.org/ns/hydra/core#Link') !== -1
-            })
+    @property({ type: Boolean })
+    public opened: boolean = true
+
+    @computed('opened')
+    get openCloseText() {
+        return this.opened ? 'close' : 'open'
     }
 
-    @observe('resource')
-    private getEntrypoint(resource: HydraResource) {
-        resource.apiDocumentation.loadEntrypoint()
-            .then((entrypoint) => {
-                this._setProperty('entrypoint', entrypoint.root)
-            })
-            .catch(() => {
-                this._setProperty('entrypoint', {})
-            })
+    @computed('opened')
+    get icon() {
+        return this.opened ? 'expand-less' : 'expand-more'
+    }
+
+    private toggle() {
+        this.opened = !this.opened
+    }
+
+    private load(e: any) {
+        Helpers.fireNavigation(this, this.entrypoint[e.model.link.property.id].id)
     }
 
     static get template() {
-        return html([` <style>:host { display: block }</style> ${template}`] as any)
+        return html([`${template}`] as any)
     }
 }

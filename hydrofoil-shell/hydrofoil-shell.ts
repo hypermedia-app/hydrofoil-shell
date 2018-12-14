@@ -2,7 +2,7 @@ import { computed, customElement, listen, observe, property, query } from '@poly
 import { DeclarativeEventListeners } from '@polymer/decorators/lib/declarative-event-listeners.js'
 import { microTask } from '@polymer/polymer/lib/utils/async'
 import { Debouncer } from '@polymer/polymer/lib/utils/debounce'
-import { IHydraResource } from 'alcaeus/types/Resources'
+import { HydraResource } from 'alcaeus/types/Resources'
 
 import { html, PolymerElement } from '@polymer/polymer/polymer-element'
 // @ts-ignore
@@ -15,12 +15,12 @@ import '@polymer/iron-pages/iron-pages'
 import '@polymer/paper-spinner/paper-spinner'
 import '@polymer/paper-styles/default-theme'
 import '@polymer/paper-styles/paper-styles'
-import '@polymer/polymer/lib/elements/dom-if'
 import '@polymer/paper-styles/typography'
+import '@polymer/polymer/lib/elements/dom-if'
 
+import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer'
 import {Helpers} from 'LdNavigation/ld-navigation'
 import '../loading-overlay/loading-overlay'
-import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer'
 
 type ConsoleState = 'ready' | 'loaded' | 'error' | 'operation'
 
@@ -31,22 +31,35 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
     }
 
     @computed('currentModel')
-    get displayedModel(): IHydraResource {
-        return this.currentModel['collection'] || this.currentModel
+    get displayedModel(): HydraResource {
+        // @ts-ignore
+        return this.currentModel.collection || this.currentModel
     }
 
     static get template() {
         return html([`${template}`] as any)
     }
 
+    @computed('currentModel')
+    get links() {
+        return this.currentModel.apiDocumentation
+            .getProperties(this.currentModel.types[0])
+            .filter((sp) => {
+                return sp.property.types.indexOf('http://www.w3.org/ns/hydra/core#Link') !== -1
+            })
+    }
+
     @property({ type: Object })
-    public model: IHydraResource = null
+    public model: HydraResource = null
 
     @property({ type: String })
     public url: string
 
     @property({ type: Object })
-    public currentModel: IHydraResource
+    public currentModel: HydraResource
+
+    @property({ type: Object, readOnly: true })
+    public readonly entrypoint: HydraResource
 
     @property({ type: Object, readOnly: true })
     public readonly lastError: Error
@@ -108,6 +121,17 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     public hideOperationForm() {
         this.state = this.prevState || 'ready'
+    }
+
+    @observe('resource')
+    private getEntrypoint(resource: HydraResource) {
+        resource.apiDocumentation.loadEntrypoint()
+            .then((entrypoint) => {
+                this._setProperty('entrypoint', entrypoint.root)
+            })
+            .catch(() => {
+                this._setProperty('entrypoint', {})
+            })
     }
 
     private async loadResource(value: string) {
