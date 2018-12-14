@@ -2,6 +2,7 @@ import {html, PolymerElement} from '@polymer/polymer'
 import {computed, customElement, property, query} from '@polymer/decorators'
 
 import '@polymer/iron-a11y-keys/iron-a11y-keys'
+import {IronA11yKeysElement} from '@polymer/iron-a11y-keys/iron-a11y-keys'
 import '@polymer/iron-icon/iron-icon'
 import '@polymer/iron-icons/av-icons'
 import '@polymer/iron-icons/iron-icons'
@@ -23,7 +24,8 @@ export default class HydrofoilAddressBar extends PolymerElement {
 
     public connectedCallback() {
         super.connectedCallback()
-        this.$.ironKeys.target = this.$.resource
+        const k = (this.$.ironKeys as IronA11yKeysElement)
+        k.target = this.$.resource
     }
 
     private loadOnEnter(e: KeyboardEvent) {
