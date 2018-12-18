@@ -147,7 +147,7 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
             this._setProperty('isLoading', false)
 
             import('../hydrofoil-entrypoint-menu')
-            import('lit-any/elements/lit-view')
+            import('@lit-any/lit-any/lit-view')
         } catch (err) {
             this._setProperty('lastError', err)
             this.state = 'error'

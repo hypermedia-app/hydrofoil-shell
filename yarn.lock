@@ -2,6 +2,15 @@
 # yarn lockfile v1
 
 
+"@lit-any/lit-any@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@lit-any/lit-any/-/lit-any-0.7.0.tgz#1e3bb01799822ca196d34261742c7f4541510da7"
+  integrity sha512-S2Pdax3cH8GnD9DVfLIz8nVFLxyQ36RCldoNBePBnuq+urKwQs/YMh5OEIovWTP0TsTFvH+GFfsABwGNHLsOXA==
+  dependencies:
+    "@polymer/lit-element" "^0.6"
+    "@polymer/polymer" "^3.0.0"
+    lit-html "^1.0.0-rc.1"
+
 "@polymer/app-layout@^3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@polymer/app-layout/-/app-layout-3.0.2.tgz#8a6f3c87b405635fd3547db82db8dbb6c51b6bf9"
@@ -210,13 +219,12 @@
     "@polymer/iron-meta" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/lit-element@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.5.2.tgz#8d4e2d1ada27cf0f1a38b7b0eb9fadae92eb63df"
-  integrity sha512-7v/UlqVO05YuFCxxtC7jpuMQuDiPxArO7gACHqZ3uFd9/BM9YTdktX3bKRTnKTFUaPuNWWoPGvpAe2WOQCH2Pw==
+"@polymer/lit-element@^0.6":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.6.5.tgz#c614b9638a0809883ba52bf43fca5b6ed51b7aa8"
+  integrity sha512-KVjuU/5Ugp6PFob6YEe1/B4GCKjqhEy9Tj954shL6d3DohT2sNAmbX9QfbXvcZ8RhbVELK6dzbN3i2BRA3mOKg==
   dependencies:
-    "@polymer/polymer" "^3.0.2"
-    lit-html "^0.10.0"
+    lit-html "^1.0.0-rc.1"
 
 "@polymer/paper-behaviors@^3.0.0-pre.27":
   version "3.0.1"
@@ -296,7 +304,7 @@
     "@polymer/iron-flex-layout" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.0.0-pre.11", "@polymer/polymer@^3.0.2", "@polymer/polymer@^3.0.5", "@polymer/polymer@^3.1.0":
+"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.0.5", "@polymer/polymer@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.1.0.tgz#3e1b7447a1e350fd654e1823def655d0f0828a70"
   integrity sha512-hwN8IMERsFATz/9dSMxYHL+84J9uBkPuuarxJWlTsppZ4CAYTZKnepBfNrKoyNsafBmA3yXBiiKPPf+fJtza7A==
@@ -528,11 +536,6 @@ core-decorators@^0.20.0:
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/core-decorators/-/core-decorators-0.20.0.tgz#605896624053af8c28efbe735c25a301a61c65c5"
   integrity sha1-YFiWYkBTr4wo775zXCWjAaYcZcU=
-
-core-js@^2.5.1:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.0.tgz#1e30793e9ee5782b307e37ffa22da0eacddd84d4"
-  integrity sha512-kLRC6ncVpuEW/1kwrOXYX6KQASCVtrh1gQr/UiaVgFlf9WE5Vp+lNe5+h3LuMr5PAucWnnEXwH0nQHRH/gpGtw==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -804,20 +807,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-lit-any@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/lit-any/-/lit-any-0.6.0.tgz#1af7eb4a03866c94f36178d26e8d32e06b0beda8"
-  integrity sha512-3E2RDxg67wG1/UQEvHtLLsO6IgmVEgLBu6wZJjfDaGvZTdO8obtAYejgfxi3tcOVc9+KvdH7szFowN9CLxd/yg==
-  dependencies:
-    "@polymer/lit-element" "^0.5.2"
-    "@polymer/polymer" "^3.0.0-pre.11"
-    core-js "^2.5.1"
-    lit-html "^0.10.2"
-
-lit-html@^0.10.0, lit-html@^0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.10.2.tgz#53c846afcf91bb1e6623179ef22e327ab8ac0e0e"
-  integrity sha512-ue0pIX3Fj5gUsNSozdRQIb1MAgNqFQsHgvHE/FU34xyu9NN/af3EISr7Bb+vP9YeLXIA4vLLOoYp2Z22dVYhww==
+lit-html@^1.0.0-rc.1:
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.0.0-rc.1.tgz#a83d45ed86fc7c5d4612f3092e83fd095baf1fc3"
+  integrity sha512-Qyu+lHpRtJS3Addw56rK68KgZ5cdxTfRDmYNwd8gRQBImdhkE0uyqIT5usLE9YDezFeYVqgAc2WujOOi8taF1A==
 
 mime-db@~1.37.0:
   version "1.37.0"
