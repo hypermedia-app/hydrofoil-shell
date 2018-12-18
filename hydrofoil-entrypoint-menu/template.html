@@ -8,6 +8,7 @@
 
 <paper-collapse-item header="Main menu" opened="{{opened}}">
     <paper-listbox>
+        <paper-item on-tap="loadEntrypoint">[[homeLabel]]</paper-item>
         <dom-repeat items="[[links]]" as="link">
             <template>
                 <paper-item on-tap="load">[[link.title]]</paper-item>

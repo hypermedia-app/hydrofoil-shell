@@ -24,6 +24,9 @@ export default class extends PolymerElement {
     @property({ type: Boolean })
     public opened: boolean = false
 
+    @property({ type: String })
+    public homeLabel: string = 'Home'
+
     @computed('entrypoint')
     get links() {
         return this.entrypoint.apiDocumentation
@@ -42,8 +45,12 @@ export default class extends PolymerElement {
         })
     }
 
+    private loadEntrypoint() {
+        Helpers.fireNavigation(this, this.entrypoint.id)
+    }
+
     private load(e: any) {
-        Helpers.fireNavigation(this, this.entrypoint[e.model.link.property.id].id)
+        Helpers.fireNavigation(this, this.entrypoint[e.target.link.property.id].id)
     }
 
     static get template() {
