@@ -32,7 +32,7 @@ export default class extends PolymerElement {
         return this.entrypoint.apiDocumentation
             .getProperties(this.entrypoint.types[0])
             .filter((sp) => {
-                return sp.property.types.indexOf('http://www.w3.org/ns/hydra/core#Link') !== -1
+                return sp.property.types.contains('http://www.w3.org/ns/hydra/core#Link')
             })
     }
 
@@ -50,7 +50,7 @@ export default class extends PolymerElement {
     }
 
     private load(e: any) {
-        Helpers.fireNavigation(this, this.entrypoint[e.target.link.property.id].id)
+        Helpers.fireNavigation(this, this.entrypoint[e.model.link.property.id].id)
     }
 
     static get template() {
