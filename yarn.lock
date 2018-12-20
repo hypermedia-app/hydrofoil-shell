@@ -340,10 +340,6 @@
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.7.1.tgz#dba82c431449d2250b49f60db495d05f477882d0"
   integrity sha512-6SZqLajRPWL0rrKDZOGF8PCBq5B9JqgFmE5rX5psk6i8WrqiMkSCuO8+rnirzViTsU5CqnjQPFC3OvG4YJdMrQ==
 
-"LdNavigation@git+https://github.com/tpluscode/ld-navigation.git":
-  version "0.4.0-a3"
-  resolved "git+https://github.com/tpluscode/ld-navigation.git#65e707fc466f0730a6c9943eec77b5db50bc1873"
-
 ajv@^6.5.5:
   version "6.6.1"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.1.tgz#6360f5ed0d80f232cc2b294c362d5dc2e538dd61"
@@ -806,6 +802,18 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
+
+ld-navigation@^0.5.0-a1:
+  version "0.5.0-a1"
+  resolved "https://registry.yarnpkg.com/ld-navigation/-/ld-navigation-0.5.0-a1.tgz#88cce3f874587c94a5fbff87c14d15149c5f65b4"
+  integrity sha512-pBy14FYRsSKq7tOIHagTJEO7/Kajm9RFQNCImLEHjoXzZHvjPT+PPPNtO8waZt4OMMS//H2DvBE5FgAZhpNY0w==
+  dependencies:
+    lit-html "0.14"
+
+lit-html@0.14:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.14.0.tgz#d6830e8f55fb923b0f5824decf7da082a1d22997"
+  integrity sha512-+xqUPzzJGEDqb0F5DOnMXvL0jxpkKebAMlXycKZxFtzlmD+qePEmYrEUPF9XVXcc5eYBzYXTCOUcjSCod4YvgQ==
 
 lit-html@^1.0.0-rc.1:
   version "1.0.0-rc.1"

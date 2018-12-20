@@ -3,7 +3,7 @@ import {html, PolymerElement} from '@polymer/polymer'
 import {animationFrame} from '@polymer/polymer/lib/utils/async'
 import {Debouncer} from '@polymer/polymer/lib/utils/debounce'
 import {HydraResource} from 'alcaeus/types/Resources'
-import {Helpers} from 'LdNavigation/ld-navigation'
+import fireNavigation from 'ld-navigation/fireNavigation'
 
 import '@polymer/paper-item'
 import '@polymer/paper-listbox'
@@ -46,11 +46,11 @@ export default class extends PolymerElement {
     }
 
     private loadEntrypoint() {
-        Helpers.fireNavigation(this, this.entrypoint.id)
+        fireNavigation(this, this.entrypoint.id)
     }
 
     private load(e: any) {
-        Helpers.fireNavigation(this, this.entrypoint[e.model.link.property.id].id)
+        fireNavigation(this, this.entrypoint[e.model.link.property.id].id)
     }
 
     static get template() {

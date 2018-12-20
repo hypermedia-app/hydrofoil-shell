@@ -1,13 +1,13 @@
-import {html, PolymerElement} from '@polymer/polymer'
 import {computed, customElement, property, query} from '@polymer/decorators'
+import {html, PolymerElement} from '@polymer/polymer'
 
 import '@polymer/iron-a11y-keys/iron-a11y-keys'
 import {IronA11yKeysElement} from '@polymer/iron-a11y-keys/iron-a11y-keys'
 import '@polymer/iron-icon/iron-icon'
 import '@polymer/iron-icons/av-icons'
 import '@polymer/iron-icons/iron-icons'
-import '@polymer/paper-input/paper-input'
 import '@polymer/paper-icon-button/paper-icon-button'
+import '@polymer/paper-input/paper-input'
 
 @customElement('hydrofoil-address-bar')
 export default class HydrofoilAddressBar extends PolymerElement {
@@ -47,7 +47,7 @@ export default class HydrofoilAddressBar extends PolymerElement {
         --paper-input-container-input-color: white;
         pointer-events: auto !important;
     }
-    
+
     paper-input {
         flex-grow: 1;
     }

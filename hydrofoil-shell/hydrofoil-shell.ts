@@ -17,9 +17,10 @@ import '@polymer/paper-styles/default-theme'
 import '@polymer/paper-styles/paper-styles'
 import '@polymer/paper-styles/typography'
 import '@polymer/polymer/lib/elements/dom-if'
+import 'ld-navigation/ld-navigator'
 
 import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer'
-import {Helpers} from 'LdNavigation/ld-navigation'
+import fireNavigation from 'ld-navigation/fireNavigation'
 import '../loading-overlay/loading-overlay'
 
 type ConsoleState = 'ready' | 'loaded' | 'error' | 'operation'
@@ -88,7 +89,7 @@ export default abstract class HydrofoilShell extends DeclarativeEventListeners(P
 
     public load() {
         this._setProperty('isLoading', true)
-        Helpers.fireNavigation(this, this.url)
+        fireNavigation(this, this.url)
     }
 
     public showModel(ev: CustomEvent) {
