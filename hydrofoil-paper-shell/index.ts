@@ -25,7 +25,7 @@ import '../loading-overlay/loading-overlay'
 
 type ConsoleState = 'ready' | 'loaded' | 'error' | 'operation'
 
-export default abstract class HydrofoilShell extends DeclarativeEventListeners(PolymerElement) {
+export default abstract class HydrofoilPaperShell extends DeclarativeEventListeners(PolymerElement) {
     @computed('model')
     get hasApiDocumentation() {
         return !!this.model && !!this.model.apiDocumentation
