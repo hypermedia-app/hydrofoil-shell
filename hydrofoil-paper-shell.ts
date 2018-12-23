@@ -44,10 +44,12 @@ export class HydrofoilPaperShell extends HydrofoilShell {
     }
 
     protected async renderMenu() {
-        const entrypoint = await this.entrypoint
-        await import('./hydrofoil-entrypoint-menu')
-
-        return html`<hydrofoil-entrypoint-menu .entrypoint="${entrypoint}"></hydrofoil-entrypoint-menu>`
+        return Promise.all([
+            this.entrypoint,
+            import('./hydrofoil-entrypoint-menu'),
+        ]).then((resovled) => {
+            return html`<hydrofoil-entrypoint-menu .entrypoint="${resovled[0]}"></hydrofoil-entrypoint-menu>`
+        })
     }
 
     protected renderMain() {

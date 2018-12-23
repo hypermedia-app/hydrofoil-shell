@@ -30,11 +30,22 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
 
     public updated(props) {
         if (props.has('url')) {
+            this.dispatchEvent(new CustomEvent('url-changed', {
+                bubbles: false,
+                composed: true,
+                detail: {
+                    value: props.get('url'),
+                },
+            }))
             this.loadResource(props.get('url'))
         }
     }
 
     public loadResource(url) {
+        if (!url) {
+            return
+        }
+
         this.isLoading = true
 
         this.loadResourceInternal(url)
@@ -71,6 +82,7 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
 
     private urlChanged(e: CustomEvent) {
         if (e.detail.value !== '/') {
+            this.url = e.detail.value
             this.loadResource(e.detail.value)
         }
     }
