@@ -2,6 +2,7 @@ import {html, LitElement, property} from '@polymer/lit-element'
 import debounce from './lib/debounce'
 
 import 'ld-navigation/ld-navigator'
+import notify from './lib/notify'
 
 type ConsoleState = 'ready' | 'loaded' | 'error'
 
@@ -29,15 +30,8 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
     }
 
     public updated(props) {
-        if (props.has('url')) {
-            this.dispatchEvent(new CustomEvent('url-changed', {
-                bubbles: false,
-                composed: true,
-                detail: {
-                    value: props.get('url'),
-                },
-            }))
-        }
+        super.updated(props)
+        notify(this, props, 'url')
     }
 
     public loadResource(url) {

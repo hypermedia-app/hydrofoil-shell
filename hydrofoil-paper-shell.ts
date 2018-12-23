@@ -1,9 +1,9 @@
 import {customElement, html} from '@polymer/lit-element'
-import {until} from 'lit-html/directives/until'
 import {HydrofoilShell} from './hydrofoil-shell'
 
 import '@polymer/app-layout/app-layout'
 import '@polymer/iron-pages/iron-pages'
+import '@polymer/paper-item/paper-item'
 import '@polymer/paper-spinner/paper-spinner'
 import './loading-overlay/loading-overlay'
 
@@ -43,16 +43,9 @@ export class HydrofoilPaperShell extends HydrofoilShell {
             </style>`
     }
 
-    protected async renderMenu() {
-        return Promise.all([
-            this.entrypoint,
-            import('./hydrofoil-entrypoint-menu'),
-        ]).then((resovled) => {
-            return html`<hydrofoil-entrypoint-menu .entrypoint="${resovled[0]}"></hydrofoil-entrypoint-menu>`
-        })
-    }
-
     protected renderMain() {
+        import('./hydrofoil-entrypoint-menu')
+
         return html`<app-drawer-layout>
         <app-drawer slot="drawer" swipe-open>
             <app-toolbar class="medium-tall">
@@ -61,7 +54,9 @@ export class HydrofoilPaperShell extends HydrofoilShell {
 
             <slot name="toolbar-left"></slot>
 
-            ${until(this.renderMenu(), html`menu loading`)}
+            ${this.entrypoint
+                ? html`<hydrofoil-entrypoint-menu .entrypoint="${this.entrypoint}"></hydrofoil-entrypoint-menu>`
+                : html`<paper-item>Menu loading</paper-item>` }
         </app-drawer>
 
         <app-drawer align="end" slot="drawer" swipe-open>
