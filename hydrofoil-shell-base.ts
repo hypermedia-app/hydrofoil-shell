@@ -37,7 +37,6 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
                     value: props.get('url'),
                 },
             }))
-            this.loadResource(props.get('url'))
         }
     }
 
