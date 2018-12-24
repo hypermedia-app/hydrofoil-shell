@@ -2,6 +2,8 @@ import {customElement, html} from '@polymer/lit-element'
 import {HydrofoilShell} from './hydrofoil-shell'
 
 import '@polymer/app-layout/app-layout'
+import '@polymer/iron-icon/iron-icon'
+import '@polymer/iron-icons/iron-icons'
 import '@polymer/iron-pages/iron-pages'
 import '@polymer/paper-item/paper-item'
 import '@polymer/paper-spinner/paper-spinner'
@@ -56,7 +58,10 @@ export class HydrofoilPaperShell extends HydrofoilShell {
 
             ${this.entrypoint
                 ? html`<hydrofoil-entrypoint-menu .entrypoint="${this.entrypoint}"></hydrofoil-entrypoint-menu>`
-                : html`<paper-item>Menu loading</paper-item>` }
+                : html`<paper-item>
+                         <paper-item-body>Main menu (loading...)</paper-item-body>
+                         <iron-icon icon="hourglass-empty"></iron-icon>
+                       </paper-item>` }
         </app-drawer>
 
         <app-drawer align="end" slot="drawer" swipe-open>
