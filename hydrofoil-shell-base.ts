@@ -45,6 +45,7 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
             .then((model) => {
                 this.model = model
                 this.state = 'loaded'
+                this.isLoading = false
 
                 import('@lit-any/lit-any/lit-view')
                 this.dispatchEvent(new CustomEvent('model-changed', {
@@ -54,9 +55,8 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
             .catch((e) => {
                 this.lastError = e
                 this.state = 'error'
+                this.isLoading = false
             })
-
-        this.isLoading = false
     }
 
     protected abstract loadResourceInternal(url: string): Promise<TModel>

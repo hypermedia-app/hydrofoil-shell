@@ -6,25 +6,14 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element'
 // @ts-ignore
 @customElement('loading-overlay')
 export default class LoadingOverlay extends mixinBehaviors(IronOverlayBehavior, PolymerElement) {
-    // @ts-ignore
-    @property({ type: Boolean, readOnly: true })
-    public readonly withBackdrop = true
-
-    // @ts-ignore
-    @property({ type: Boolean, readOnly: true })
-    public readonly noCancelOnOutsideClick = true
-
-    // @ts-ignore
-    @property({ type: Boolean, readOnly: true })
-    public readonly alwaysOnTop = true
-
-    // @ts-ignore
-    @property({ type: Boolean, readOnly: true })
-    public readonly noCancelOnEscKey = true
-
-    // @ts-ignore
-    @property({ type: Boolean, readOnly: true })
-    public readonly autoFitOnAttach = true
+    constructor() {
+        super()
+        this.withBackdrop = true;
+        this.noCancelOnOutsideClick = true;
+        this.alwaysOnTop = true;
+        this.noCancelOnEscKey = true;
+        this.autoFitOnAttach = true;
+    }
 
     static get template() {
         return html`<slot></slot>`
