@@ -34,29 +34,29 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
         notify(this, props, 'url')
     }
 
-    public loadResource(url) {
+    public async loadResource(url) {
         if (!url) {
             return
         }
 
-        this.isLoading = true
+        try {
+            await this.updateComplete
+            this.isLoading = true
+            const model = await this.loadResourceInternal(url)
 
-        this.loadResourceInternal(url)
-            .then((model) => {
-                this.model = model
-                this.state = 'loaded'
-                this.isLoading = false
+            this.model = model
+            this.state = 'loaded'
+            this.isLoading = false
 
-                import('@lit-any/lit-any/lit-view')
-                this.dispatchEvent(new CustomEvent('model-changed', {
-                    detail: model,
-                }))
-            })
-            .catch((e) => {
-                this.lastError = e
-                this.state = 'error'
-                this.isLoading = false
-            })
+            import('@lit-any/lit-any/lit-view')
+            this.dispatchEvent(new CustomEvent('model-changed', {
+                detail: model,
+            }))
+        } catch(e) {
+            this.lastError = e
+            this.state = 'error'
+            this.isLoading = false
+        }
     }
 
     protected abstract loadResourceInternal(url: string): Promise<TModel>
