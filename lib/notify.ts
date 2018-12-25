@@ -4,7 +4,7 @@ export default function(element, props, name) {
             bubbles: false,
             composed: true,
             detail: {
-                value: props.get(name),
+                value: element[name],
             },
         }))
     }
