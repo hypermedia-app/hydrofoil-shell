@@ -1,5 +1,5 @@
 import {html, LitElement, property} from '@polymer/lit-element'
-import debounce from './lib/debounce'
+import {ifDefined} from 'lit-html/directives/if-defined'
 
 import 'ld-navigation/ld-navigator'
 import notify from './lib/notify'
@@ -8,7 +8,7 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
 
 export abstract class HydrofoilShellBase<TModel> extends LitElement {
     @property({ type: Boolean, attribute: 'use-has-urls' })
-    public useHashUrls: boolean
+    public useHashUrls: boolean = false
 
     @property({ type: Object, attribute: false })
     public model: TModel
@@ -65,7 +65,7 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
         return html`
             ${this._style}
             <ld-navigator @resource-url-changed="${this.urlChanged}"
-                          use-hash-fragment="${this.useHashUrls}"></ld-navigator>
+                          ?use-hash-fragment="${ifDefined(this.useHashUrls)}"></ld-navigator>
             ${this.renderMain()}`
     }
 
