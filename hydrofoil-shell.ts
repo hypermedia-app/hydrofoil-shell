@@ -41,4 +41,8 @@ export class HydrofoilShell extends HydrofoilShellBase<HydraResource> {
         const hr = await alcaeus.Hydra.loadResource(url)
         return hr.root
     }
+
+    protected areSame(left, right) {
+        return left.id === right.id
+    }
 }
