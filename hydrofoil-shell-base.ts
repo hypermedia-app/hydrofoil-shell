@@ -35,7 +35,9 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
     public connectedCallback() {
         super.connectedCallback()
         this.addEventListener('hydrofoil-append-resource', (e: CustomEvent) => {
-            this.displayedResources = [ ...this.displayedResources, e.detail.resource];
+            const indexOfParent = this.displayedResources.findIndex(res => this.areSame(res, e.detail.parent))
+            const remaining = this.displayedResources.slice(0, indexOfParent + 1)
+            this.displayedResources = [ ...remaining, e.detail.resource];
         })
 
         this.addEventListener('hydrofoil-close-resource', (e: CustomEvent) => {
