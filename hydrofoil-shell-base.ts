@@ -13,9 +13,6 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
     @property({ type: Object, attribute: false })
     public model: TModel
 
-    @property({ type: Array, attribute: false })
-    public displayedResources: Array<TModel>
-
     @property({ type: String, attribute: false })
     public url: string
 
@@ -32,28 +29,9 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
         return html`<style>:host { display: block; margin: 0 }</style>`
     }
 
-    public connectedCallback() {
-        super.connectedCallback()
-        this.addEventListener('hydrofoil-append-resource', (e: CustomEvent) => {
-            const indexOfParent = this.displayedResources.findIndex(res => this.areSame(res, e.detail.parent))
-            const remaining = this.displayedResources.slice(0, indexOfParent + 1)
-            this.displayedResources = [ ...remaining, e.detail.resource];
-        })
-
-        this.addEventListener('hydrofoil-close-resource', (e: CustomEvent) => {
-            const indexOfRemoved = this.displayedResources.findIndex(res => this.areSame(res, e.detail.resource))
-
-            this.displayedResources = this.displayedResources.slice(0, indexOfRemoved)
-        })
-    }
-
     public updated(props) {
         super.updated(props)
         notify(this, props, 'url')
-
-        if(props.has('model')) {
-            this.displayedResources = [ this.model ]
-        }
     }
 
     public async loadResource(url) {
@@ -83,8 +61,6 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
 
     protected abstract loadResourceInternal(url: string): Promise<TModel>
 
-    protected abstract areSame(left: TModel, right: TModel): boolean
-
     protected render() {
         return html`
             ${this._style}
@@ -94,7 +70,7 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
     }
 
     protected renderMain() {
-        return html`<lit-view .value="${this.displayedResources}" ignore-missing></lit-view>`
+        return html`<lit-view .value="${this.model}" ignore-missing></lit-view>`
     }
 
     private urlChanged(e: CustomEvent) {
