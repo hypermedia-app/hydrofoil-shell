@@ -70,7 +70,7 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
     }
 
     protected renderMain() {
-        return html`<lit-view .value="${this.model}" ignore-missing></lit-view>`
+        return html`<lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>`
     }
 
     private urlChanged(e: CustomEvent) {
