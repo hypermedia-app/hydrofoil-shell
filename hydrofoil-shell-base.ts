@@ -25,6 +25,12 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
     @property({ type: Object, attribute: false })
     public lastError: Error
 
+    @property({ type: String, attribute: 'base-url'})
+    public baseUrl: string
+
+    @property({ type: String, attribute: 'client-base' })
+    public clientBasePath: string
+
     protected get _style() {
         return html`<style>:host { display: block; margin: 0 }</style>`
     }
@@ -65,6 +71,8 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
         return html`
             ${this._style}
             <ld-navigator @resource-url-changed="${this.urlChanged}"
+                          base-url="${ifDefined(this.baseUrl)}"
+                          client-base-path="${ifDefined(this.clientBasePath)}"
                           ?use-hash-fragment="${ifDefined(this.useHashUrls)}"></ld-navigator>
             ${this.renderMain()}`
     }
