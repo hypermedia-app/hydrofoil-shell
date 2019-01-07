@@ -20,7 +20,7 @@ export abstract class HydrofoilShellBase<TModel> extends LitElement {
     public isLoading: boolean = false
 
     @property({ type: String, reflect: true })
-    public state: ConsoleState
+    public state: ConsoleState = 'ready'
 
     @property({ type: Object, attribute: false })
     public lastError: Error
