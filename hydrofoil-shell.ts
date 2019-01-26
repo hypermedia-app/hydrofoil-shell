@@ -12,7 +12,7 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  *
  * On its own it does not interact with the server nor does it render any shell UI.
  */
-export abstract class HydrofoilShell<TModel> extends LitElement {
+export class HydrofoilShell<TModel> extends LitElement {
     /**
      * Dispatched when the model has been loaded
      *
@@ -116,7 +116,9 @@ export abstract class HydrofoilShell<TModel> extends LitElement {
      * @param url {string} The resource identifier
      * @returns {Promise<TModel>}
      */
-    protected abstract loadResourceInternal(url: string): Promise<TModel>
+    protected loadResourceInternal(url: string): Promise<TModel> {
+        throw new Error('Method not implemented')
+    }
 
     protected render() {
         return html`
