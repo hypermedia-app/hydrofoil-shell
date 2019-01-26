@@ -21,6 +21,12 @@ export class HydrofoilShell extends LitNotify(LitElement) {
      */
 
     /**
+     * Dispatched when the url has changed
+     *
+     * @event url-changed
+     */
+
+    /**
      * Controls whether HTML5 History API or hash URLs are used for browser location
      */
     @property({ type: Boolean, attribute: 'use-hash-urls' })
@@ -35,7 +41,7 @@ export class HydrofoilShell extends LitNotify(LitElement) {
     /**
      * The current resource identifier
      */
-    @property({ type: String, attribute: false })
+    @property({ type: String, attribute: false, notify: true } as any)
     public url: string
 
     /**
