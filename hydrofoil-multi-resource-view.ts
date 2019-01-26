@@ -1,12 +1,28 @@
 import {html, LitElement, property} from '@polymer/lit-element'
 
+/**
+ * A base element class which builds a foundation for maintaining multiple resources, such as in a hierarchical
+ * or stacked view.
+ *
+ * Resources are added and removed from view by dispatching `hydrofoil-append-resource` and `hydrofoil-close-resource`
+ * events in the children of `HydrofoilMultiResourceView`
+ */
 export default abstract class HydrofoilMultiResourceView extends LitElement {
+    /**
+     * The top-most resource model
+     */
     @property({ type: Object, attribute: false })
     public root: any
 
+    /**
+     * All managed resources
+     */
     @property({ type: Array, attribute: false })
     public displayedResources: any[] = []
 
+    /**
+     * The currently rendered resource
+     */
     @property({ type: Object, attribute: false })
     public current: any
 
@@ -40,6 +56,10 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
         return this.renderAll()
     }
 
+    /**
+     * Renders a single resource
+     * @param model
+     */
     protected renderModel(model: any) {
         return html`<lit-view .value="${model}" ignore-missing template-scope="hydrofoil-multi-resource"></lit-view>`
     }
@@ -48,7 +68,17 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
         return model.title || model.id.match(/\/[^/]+\/?$/)
     }
 
+    /**
+     * When implemented in a derived class, compares two resources to prevent displaying same twice and
+     * control the right order
+     *
+     * @return {boolean}
+     */
     protected abstract areSame(left: any, right: any)
+
+    /**
+     * When implemented in derived class renders all resources by calling `renderModel` for each one currently displayed
+     */
     protected abstract renderAll()
 
     protected close(removed: any) {
