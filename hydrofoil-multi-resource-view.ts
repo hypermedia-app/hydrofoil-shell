@@ -1,4 +1,4 @@
-import {html, LitElement, property} from '@polymer/lit-element'
+import {html, LitElement, property} from 'lit-element'
 
 /**
  * A base element class which builds a foundation for maintaining multiple resources, such as in a hierarchical

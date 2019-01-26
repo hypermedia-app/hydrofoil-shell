@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@lit-any/lit-any": "^0.7.0",
-    "@polymer/lit-element": "^0.6.5",
+    "lit-element": "^2.0.0-rc.5",
     "@polymer/polymer": "^3.1.0",
     "alcaeus": "^0.4.4",
     "core-decorators": "^0.20.0",

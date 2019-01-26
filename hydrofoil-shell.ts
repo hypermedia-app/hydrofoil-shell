@@ -1,4 +1,4 @@
-import {html, LitElement, property} from '@polymer/lit-element'
+import {html, LitElement, property} from 'lit-element'
 import {ifDefined} from 'lit-html/directives/if-defined'
 import {TemplateResult} from 'lit-html'
 

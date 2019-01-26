@@ -1,4 +1,4 @@
-import {property} from '@polymer/lit-element'
+import {property} from 'lit-element'
 import {HydraResource} from 'alcaeus/types/Resources'
 
 import {HydrofoilShell} from './hydrofoil-shell'
