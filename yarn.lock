@@ -11,6 +11,11 @@
     "@polymer/polymer" "^3.0.0"
     lit-html "^1.0.0-rc.1"
 
+"@morbidick/lit-element-notify@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@morbidick/lit-element-notify/-/lit-element-notify-0.6.1.tgz#5b95000e05d0de599327c22cf43fe4f55a9deab0"
+  integrity sha512-VoeeMu7vGg7xTNnG3Ua7cjU67+DEPxXcNIJLUjnRKSp5DZf+nplA211NAaioJTcLSVvdRhwSxhplxm1FO8KrOA==
+
 "@polymer/lit-element@^0.6":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.6.5.tgz#c614b9638a0809883ba52bf43fca5b6ed51b7aa8"

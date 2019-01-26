@@ -1,9 +1,9 @@
+import {LitNotify} from '@morbidick/lit-element-notify/notify'
 import {html, LitElement, property} from 'lit-element'
-import {ifDefined} from 'lit-html/directives/if-defined'
 import {TemplateResult} from 'lit-html'
+import {ifDefined} from 'lit-html/directives/if-defined'
 
 import 'ld-navigation/ld-navigator'
-import notify from './lib/notify'
 
 type ConsoleState = 'ready' | 'loaded' | 'error'
 
@@ -13,7 +13,7 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  *
  * On its own it does not interact with the server nor does it render any shell UI.
  */
-export class HydrofoilShell extends LitElement {
+export class HydrofoilShell extends LitNotify(LitElement) {
     /**
      * Dispatched when the model has been loaded
      *
@@ -78,11 +78,6 @@ export class HydrofoilShell extends LitElement {
         return html`<style>:host { display: block; margin: 0 }</style>`
     }
 
-    public updated(props) {
-        super.updated(props)
-        notify(this, props, 'url')
-    }
-
     /**
      * Loads the resource identified by the given URL
      *
@@ -107,7 +102,7 @@ export class HydrofoilShell extends LitElement {
             this.dispatchEvent(new CustomEvent('model-changed', {
                 detail: model,
             }))
-        } catch(e) {
+        } catch (e) {
             this.lastError = e
             this.state = 'error'
             this.isLoading = false
