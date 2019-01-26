@@ -8,7 +8,7 @@ function checkId(value, old) {
     return !old || old.id !== value.id
 }
 
-type Constructor<T = HydrofoilShell<HydraResource>> = new (...args: any[]) => T;
+type Constructor<T = HydrofoilShell> = new (...args: any[]) => T;
 
 /**
  * A base shell mixin class which uses `Alcaeus` Hydra client to load the resources

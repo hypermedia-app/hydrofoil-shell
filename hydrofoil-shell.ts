@@ -1,5 +1,6 @@
 import {html, LitElement, property} from '@polymer/lit-element'
 import {ifDefined} from 'lit-html/directives/if-defined'
+import {TemplateResult} from 'lit-html'
 
 import 'ld-navigation/ld-navigator'
 import notify from './lib/notify'
@@ -12,7 +13,7 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  *
  * On its own it does not interact with the server nor does it render any shell UI.
  */
-export class HydrofoilShell<TModel> extends LitElement {
+export class HydrofoilShell extends LitElement {
     /**
      * Dispatched when the model has been loaded
      *
@@ -29,7 +30,7 @@ export class HydrofoilShell<TModel> extends LitElement {
      * Current resource representation
      */
     @property({ type: Object, attribute: false })
-    public model: TModel
+    public model: any
 
     /**
      * The current resource identifier
@@ -69,6 +70,10 @@ export class HydrofoilShell<TModel> extends LitElement {
     @property({ type: String, attribute: 'client-base' })
     public clientBasePath: string
 
+    /**
+     * @returns {TemplateResult}
+     * @private
+     */
     protected get _style() {
         return html`<style>:host { display: block; margin: 0 }</style>`
     }
@@ -116,7 +121,7 @@ export class HydrofoilShell<TModel> extends LitElement {
      * @param url {string} The resource identifier
      * @returns {Promise<TModel>}
      */
-    protected loadResourceInternal(url: string): Promise<TModel> {
+    protected loadResourceInternal(url: string): Promise<any> {
         throw new Error('Method not implemented')
     }
 
@@ -134,6 +139,8 @@ export class HydrofoilShell<TModel> extends LitElement {
      * Renders the main view element, bound to the loaded resource representation.
      *
      * The actual content rendering is delegated to `lit-any` package
+     *
+     * @returns {TemplateResult}
      */
     protected renderMain() {
         return html`<lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>`
