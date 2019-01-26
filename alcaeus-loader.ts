@@ -8,15 +8,15 @@ function checkId(value, old) {
     return !old || old.id !== value.id
 }
 
-type Constructor<T = HydrofoilShell> = new (...args: any[]) => T;
+interface Constructor<C> { new (...args: any[]): C; }
 
 /**
  * A base shell mixin class which uses `Alcaeus` Hydra client to load the resources
  *
  * @mixinFunction
  */
-export default function<CBase extends Constructor>(Base: CBase) {
-    class AlcaeusLoader extends Base {
+export default function<B extends Constructor<HydrofoilShell>>(Base: B) {
+    class Mixin extends Base {
         /**
          * Dispatched when the entrypoint has been loaded
          *
@@ -56,5 +56,5 @@ export default function<CBase extends Constructor>(Base: CBase) {
         }
     }
 
-    return AlcaeusLoader
+    return Mixin
 }
