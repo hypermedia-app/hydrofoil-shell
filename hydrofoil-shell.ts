@@ -84,7 +84,7 @@ export class HydrofoilShell extends LitElement {
         return html`<style>:host { display: block; margin: 0 }</style>`
     }
 
-    public updated(props) {
+    protected updated(props) {
         super.updated(props)
         notify(this, props, 'url')
     }

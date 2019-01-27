@@ -10,23 +10,6 @@
     lit-element "^2.0.0-rc.5"
     lit-html "^1.0.0-rc.2"
 
-"@morbidick/lit-element-notify@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@morbidick/lit-element-notify/-/lit-element-notify-0.6.1.tgz#5b95000e05d0de599327c22cf43fe4f55a9deab0"
-  integrity sha512-VoeeMu7vGg7xTNnG3Ua7cjU67+DEPxXcNIJLUjnRKSp5DZf+nplA211NAaioJTcLSVvdRhwSxhplxm1FO8KrOA==
-
-"@polymer/polymer@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.1.0.tgz#3e1b7447a1e350fd654e1823def655d0f0828a70"
-  integrity sha512-hwN8IMERsFATz/9dSMxYHL+84J9uBkPuuarxJWlTsppZ4CAYTZKnepBfNrKoyNsafBmA3yXBiiKPPf+fJtza7A==
-  dependencies:
-    "@webcomponents/shadycss" "^1.5.2"
-
-"@webcomponents/shadycss@^1.5.2":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.7.1.tgz#dba82c431449d2250b49f60db495d05f477882d0"
-  integrity sha512-6SZqLajRPWL0rrKDZOGF8PCBq5B9JqgFmE5rX5psk6i8WrqiMkSCuO8+rnirzViTsU5CqnjQPFC3OvG4YJdMrQ==
-
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
