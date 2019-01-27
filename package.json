@@ -19,7 +19,7 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@lit-any/lit-any": "^0.7.0",
+    "@lit-any/lit-any": "^0.8.0",
     "@morbidick/lit-element-notify": "^0.6.1",
     "@polymer/polymer": "^3.1.0",
     "ld-navigation": "^0.5.0-a1",
