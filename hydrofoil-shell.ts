@@ -14,6 +14,14 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  * On its own it does not interact with the server nor does it render any shell UI.
  */
 export class HydrofoilShell extends LitElement {
+
+    /**
+     * @returns {TemplateResult}
+     * @private
+     */
+    protected get _style() {
+        return html`<style>:host { display: block; margin: 0 }</style>`
+    }
     /**
      * Dispatched when the model has been loaded
      *
@@ -77,19 +85,6 @@ export class HydrofoilShell extends LitElement {
     public clientBasePath: string
 
     /**
-     * @returns {TemplateResult}
-     * @private
-     */
-    protected get _style() {
-        return html`<style>:host { display: block; margin: 0 }</style>`
-    }
-
-    protected updated(props) {
-        super.updated(props)
-        notify(this, props, 'url')
-    }
-
-    /**
      * Loads the resource identified by the given URL
      *
      * @param url {string}
@@ -118,6 +113,11 @@ export class HydrofoilShell extends LitElement {
             this.state = 'error'
             this.isLoading = false
         }
+    }
+
+    protected updated(props) {
+        super.updated(props)
+        notify(this, props, 'url')
     }
 
     /**
