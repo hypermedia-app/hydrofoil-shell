@@ -31,7 +31,7 @@ In order to actually deploy a shell element simple steps are required:
 Here's an example of how this would be done
 
 ```js
-import HydrofoilShell from '@hydrofoil-shell/hydrofoil-shell/hydrofoil-shell`
+import HydrofoilShell from '@hydrofoil-shell/hydrofoil-shell/hydrofoil-shell'
 import {customElement, html} from 'lit-element'
 
 @customElement('my-app-shell')
@@ -123,7 +123,7 @@ child.dispatchEvent(new CustomEvent('hydrofoil-append-resource', {
 
 | Before | event | After |
 | -- | -- | -- |
-| resA | hydrofoil-append-resource<br>parent: resA<br>- resource: resB | resA<br>resB |
-| resA<br>resB | hydrofoil-append-resource<br>- parent: resA<br>r- esource: resC | resA<br>resC |
-| resA<br>resC | hydrofoil-append-resource<br>- parent: resC<br>- resource: resD | resA<br>resC<br>resD |
-| resA<br>resC<br>resD | hydrofoil-close-resource<br>- resource: resC | resA |
+| 1. resA | hydrofoil-append-resource<br>parent: resA<br>- resource: resB | 1. resA<br>2. resB |
+| 1. resA<br>2. resB | hydrofoil-append-resource<br>- parent: resA<br>- resource: resC | 1. resA<br>2. resC |
+| 1. resA<br>2. resC | hydrofoil-append-resource<br>- parent: resC<br>- resource: resD | 1. resA<br>2. resC<br>3. resD |
+| 1. resA<br>2. resC<br>3. resD | hydrofoil-close-resource<br>- resource: resC | 1. resA |
