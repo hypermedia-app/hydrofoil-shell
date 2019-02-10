@@ -1,4 +1,4 @@
-## hydrofoil-shell
+# hydrofoil-shell
 
 UI-agnostic base element which can be used to build hypermedia-driven
 single page applications.
@@ -7,7 +7,7 @@ Implemented using [`lit-element`][le]
 
 [le]: https://lit-element.polymer-project.org
 
-### `<hydrofoil-shell>`
+## `<hydrofoil-shell>`
 
 The core element, which manages a state (single [resource representation][rr]).
 
@@ -20,7 +20,7 @@ This element is abstract. It does not:
 [rr]: https://restful-api-design.readthedocs.io/en/latest/resources.html
 [la]: https://lit-any.hypermedia.app/?selectedKind=lit-view&selectedStory=basic&full=0&addons=1&stories=1&panelRight=1&addonPanel=storybooks%2Fstorybook-addon-knobs
 
-#### Using the element
+### Using the element
 
 In order to actually deploy a shell element simple steps are required:
 
@@ -75,7 +75,7 @@ For example, Hydra APIs can be consumed by mixing in [`alcaeus-loader`][al]
 
 [al]: https://github.com/hypermedia-app/alcaeus-loader
 
-### `<hydrofoil-multi-resource-view>`
+## `<hydrofoil-multi-resource-view>`
 
 A helper element, which helps manage multiple resource. Just as the base shell
 element, it only serves as a skeleton and needs to be inherited to actually serve
@@ -87,7 +87,7 @@ and [`hydrofoil-resource-accordion`][hr-accordion].
 [hr-tabs]: https://github.com/hypermedia-app/hydrofoil-paper-shell/blob/master/hydrofoil-resource-tabs.ts
 [hr-accordion]: https://github.com/hypermedia-app/hydrofoil-paper-shell/blob/master/hydrofoil-resource-accordion.ts
 
-#### Usage
+### Usage
 
 The element is controlled by standard DOM events. To add a resource to the ones displayed
 dispatch `hydrofoil-append-resource` from any child element.
@@ -119,7 +119,7 @@ child.dispatchEvent(new CustomEvent('hydrofoil-append-resource', {
 }))
 ```
 
-##### Examples
+#### Examples
 
 | Before | event | After | Note |
 | -- | -- | -- | -- |
