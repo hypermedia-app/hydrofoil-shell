@@ -11,8 +11,7 @@
   },
   "files": [
     "**/*.js",
-    "**/*.d.ts",
-    "**/template.html"
+    "**/*.d.ts"
   ],
   "devDependencies": {
     "tslint": "^5.11.0",
