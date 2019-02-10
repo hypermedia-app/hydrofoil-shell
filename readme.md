@@ -121,9 +121,9 @@ child.dispatchEvent(new CustomEvent('hydrofoil-append-resource', {
 
 ##### Examples
 
-| Before | event | After |
-| -- | -- | -- |
-| 1. resA | hydrofoil-append-resource<br>parent: resA<br>- resource: resB | 1. resA<br>2. resB |
-| 1. resA<br>2. resB | hydrofoil-append-resource<br>- parent: resA<br>- resource: resC | 1. resA<br>2. resC |
-| 1. resA<br>2. resC | hydrofoil-append-resource<br>- parent: resC<br>- resource: resD | 1. resA<br>2. resC<br>3. resD |
-| 1. resA<br>2. resC<br>3. resD | hydrofoil-close-resource<br>- resource: resC | 1. resA |
+| Before | event | After | Note |
+| -- | -- | -- | -- |
+| 1. resA | hydrofoil-append-resource<br>- parent: resA<br>- resource: resB | 1. resA<br>2. resB | Add `resB` to stack |
+| 1. resA<br>2. resB | hydrofoil-append-resource<br>- parent: resA<br>- resource: resC | 1. resA<br>2. resC | Replace `resB` with `resC` |
+| 1. resA<br>2. resC | hydrofoil-append-resource<br>- parent: resC<br>- resource: resD | 1. resA<br>2. resC<br>3. resD | Further append `resD`
+| 1. resA<br>2. resC<br>3. resD | hydrofoil-close-resource<br>- resource: resC | 1. resA | Remove `resC` which also discards `resD` |
