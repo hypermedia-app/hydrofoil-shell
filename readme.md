@@ -7,6 +7,12 @@ Implemented using [`lit-element`][le]
 
 [le]: https://lit-element.polymer-project.org
 
+## Installation
+
+```
+yarn add @hydrofoil/hydrofoil-shell
+```
+
 ## `<hydrofoil-shell>`
 
 The core element, which manages a state (single [resource representation][rr]).
