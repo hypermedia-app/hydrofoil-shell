@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@lit-any/lit-any@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@lit-any/lit-any/-/lit-any-0.8.0.tgz#e96a45027cd92e50e0319ea8b66821e607c38517"
-  integrity sha512-QpDgVtFjohd+QvzMOnLSG5Nn21P89lVRhz7wkKd4QrHb7L4/KNRHSRppL0c7qLmoZJc4VMkWlFklD9tMV1QQZg==
+"@lit-any/lit-any@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@lit-any/lit-any/-/lit-any-0.8.1.tgz#a3c661380435cf28104bcd297e716e65a44985a6"
+  integrity sha512-p0BF4g16UmWGM4vHMHCreggeegeEoBJyX41UQ2UHEK86dqnWT2hVzW20FtI16UxDOXL536s1SPE+pTDIsFHjTQ==
   dependencies:
-    lit-element "^2.0.0-rc.5"
-    lit-html "^1.0.0-rc.2"
+    lit-element "^2.0.0"
+    lit-html "^1.0.0"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -190,22 +190,10 @@ lit-element@^2.0.0:
   dependencies:
     lit-html "^1.0.0"
 
-lit-element@^2.0.0-rc.5:
-  version "2.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.0.0-rc.5.tgz#3e4323c9ace59d49c3a0950551a3f923e0ccf86b"
-  integrity sha512-cMmWNWSFyYfXAd09bnqFhqDr5kuR/5guImD5ZRTk223EiBJaoo7naZnQngSYAMjgDn1CSbTE1LRtzviMS+g0RA==
-  dependencies:
-    lit-html "^1.0.0-rc.2"
-
 lit-html@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.0.0.tgz#3dc3781a8ca68a9b5c2ff2a61e263662b9b2267b"
   integrity sha512-oeWlpLmBW3gFl7979Wol2LKITpmKTUFNn7PnFbh6YNynF61W74l6x5WhwItAwPRSATpexaX1egNnRzlN4GOtfQ==
-
-lit-html@^1.0.0-rc.2:
-  version "1.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.0.0-rc.2.tgz#b9c904520fe005d349aa737a86d83645d97d5a89"
-  integrity sha512-4bq34lhVmwWly1zBXicOBJLOwaWfjOVbchEEmFnZLuztxjh5wRd2WqV0URX8Q47MQ7PaIjn/eXyTRKsYhSAeRw==
 
 minimatch@^3.0.4:
   version "3.0.4"

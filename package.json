@@ -21,7 +21,7 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@lit-any/lit-any": "^0.8.0",
+    "@lit-any/lit-any": "^0.8.1",
     "ld-navigation": "^0.5.2",
     "lit-element": "^2.0.0"
   },
