@@ -178,12 +178,17 @@ js-yaml@^3.7.0:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
-ld-navigation@^0.5.0-a1:
-  version "0.5.0-a1"
-  resolved "https://registry.yarnpkg.com/ld-navigation/-/ld-navigation-0.5.0-a1.tgz#88cce3f874587c94a5fbff87c14d15149c5f65b4"
-  integrity sha512-pBy14FYRsSKq7tOIHagTJEO7/Kajm9RFQNCImLEHjoXzZHvjPT+PPPNtO8waZt4OMMS//H2DvBE5FgAZhpNY0w==
+ld-navigation@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/ld-navigation/-/ld-navigation-0.5.2.tgz#f6747016e64f6e5d30011e0d072f0844b64dcf27"
+  integrity sha512-AZ+agVtT0hs/UARCer5Ocl6l49mnG3R/KRgxtERUiZGvKlTxfol/BVZm4AvWUZkCGzk7mGs657eWOmO03RhHHw==
+
+lit-element@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.0.1.tgz#9ec5871d3b64487f432c7c071df80ef031d7091b"
+  integrity sha512-2bu3B2ZYUZgntvOgu3i5mRK8geo45CLUwxwJEYK54hyednoJasjiTZPB13NBg1D+hNM2JfmWTWJnh1QEUQv7zw==
   dependencies:
-    lit-html "0.14"
+    lit-html "^1.0.0"
 
 lit-element@^2.0.0-rc.5:
   version "2.0.0-rc.5"
@@ -192,10 +197,10 @@ lit-element@^2.0.0-rc.5:
   dependencies:
     lit-html "^1.0.0-rc.2"
 
-lit-html@0.14:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.14.0.tgz#d6830e8f55fb923b0f5824decf7da082a1d22997"
-  integrity sha512-+xqUPzzJGEDqb0F5DOnMXvL0jxpkKebAMlXycKZxFtzlmD+qePEmYrEUPF9XVXcc5eYBzYXTCOUcjSCod4YvgQ==
+lit-html@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.0.0.tgz#3dc3781a8ca68a9b5c2ff2a61e263662b9b2267b"
+  integrity sha512-oeWlpLmBW3gFl7979Wol2LKITpmKTUFNn7PnFbh6YNynF61W74l6x5WhwItAwPRSATpexaX1egNnRzlN4GOtfQ==
 
 lit-html@^1.0.0-rc.2:
   version "1.0.0-rc.2"

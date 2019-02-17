@@ -2,7 +2,10 @@
   "name": "@hydrofoil/hydrofoil-shell",
   "version": "0.1.0",
   "description": "A base for a Hydra-driven application",
-  "repository": "https://github.com/hypermedia-app/hydrofoil-shell",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypermedia-app/hydrofoil-shell.git"
+  },
   "author": "tpluscode",
   "license": "MIT",
   "scripts": {
@@ -19,7 +22,11 @@
   },
   "dependencies": {
     "@lit-any/lit-any": "^0.8.0",
-    "ld-navigation": "^0.5.0-a1",
-    "lit-element": "^2.0.0-rc.5"
-  }
+    "ld-navigation": "^0.5.2",
+    "lit-element": "^2.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/hypermedia-app/hydrofoil-shell/issues"
+  },
+  "homepage": "https://github.com/hypermedia-app/hydrofoil-shell#readme"
 }

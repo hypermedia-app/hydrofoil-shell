@@ -12,6 +12,8 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  * with back-end resource identifier.
  *
  * On its own it does not interact with the server nor does it render any shell UI.
+ *
+ * @customElement
  */
 export class HydrofoilShell extends LitElement {
 
