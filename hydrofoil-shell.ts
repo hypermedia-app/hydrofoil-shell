@@ -111,6 +111,7 @@ export class HydrofoilShell extends LitElement {
                 detail: model,
             }))
         } catch (e) {
+            console.error(e)
             this.lastError = e
             this.state = 'error'
             this.isLoading = false
