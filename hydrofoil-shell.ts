@@ -140,7 +140,18 @@ export class HydrofoilShell extends LitElement {
                           base="${ifDefined(this.baseUrl)}"
                           client-base-path="${ifDefined(this.clientBasePath)}"
                           ?use-hash-fragment="${ifDefined(this.useHashUrls)}"></ld-navigator>
-            ${this.renderMain()}`
+
+            <section id="ready" ?hidden="${this.state !== 'ready'}">
+                <slot></slot>
+            </section>
+
+            <section id="main" ?hidden="${this.state !== 'loaded'}">
+                ${this.renderMain()}
+            </section>
+
+            <section id="error" ?hidden="${this.state !== 'error'}">
+                ${this.renderError()}
+            </section>`
     }
 
     /**
@@ -152,6 +163,15 @@ export class HydrofoilShell extends LitElement {
      */
     protected renderMain() {
         return html`<lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>`
+    }
+
+    /**
+     * Renders the contents of last error was caught in the shell
+     *
+     * @returns {TemplateResult}
+     */
+    protected renderError() {
+        return html`<pre>${this.lastError && this.lastError.stack}</pre>`
     }
 
     private urlChanged(e: CustomEvent) {
