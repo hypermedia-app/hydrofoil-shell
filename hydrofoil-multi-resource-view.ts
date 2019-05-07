@@ -1,4 +1,4 @@
-import {html, LitElement, property} from 'lit-element'
+import { html, LitElement, property } from 'lit-element'
 
 /**
  * A base element class which builds a foundation for maintaining multiple resources, such as in a hierarchical
@@ -26,7 +26,7 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
     @property({ type: Object, attribute: false })
     public current: any
 
-    public updated(props) {
+    public updated (props) {
         super.updated(props)
         if (props.has('root')) {
             this.displayedResources = [ this.root ]
@@ -34,7 +34,7 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
         }
     }
 
-    public connectedCallback() {
+    public connectedCallback () {
         super.connectedCallback()
         this.addEventListener('hydrofoil-append-resource', (e: CustomEvent) => {
             const indexOfParent = this.displayedResources.findIndex((res) => this.areSame(res, e.detail.parent))
@@ -48,7 +48,7 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
         })
     }
 
-    public render() {
+    public render () {
         if (this.displayedResources.length === 1) {
             return this.renderModel(this.displayedResources[0])
         }
@@ -60,11 +60,11 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
      * Renders a single resource
      * @param model
      */
-    protected renderModel(model: any) {
+    protected renderModel (model: any) {
         return html`<lit-view .value="${model}" ignore-missing template-scope="hydrofoil-multi-resource"></lit-view>`
     }
 
-    protected getHeader(model: any) {
+    protected getHeader (model: any) {
         return model.title || model.id.match(/\/[^/]+\/?$/)
     }
 
@@ -81,7 +81,7 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
      */
     protected abstract renderAll()
 
-    protected close(removed: any) {
+    protected close (removed: any) {
         return (e: Event) => {
             const indexOfRemoved = this.displayedResources.findIndex((res) => this.areSame(res, removed))
 

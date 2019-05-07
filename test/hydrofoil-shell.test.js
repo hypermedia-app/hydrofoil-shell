@@ -1,9 +1,8 @@
-import { expect, fixture, html } from '@open-wc/testing'
-
-import {HydrofoilShell} from '../hydrofoil-shell'
+import { expect, fixture } from '@open-wc/testing'
+import { HydrofoilShell } from '../hydrofoil-shell'
 
 class TestShell extends HydrofoilShell {
-  loadResourceInternal(url) {
+  loadResourceInternal () {
     return {}
   }
 }
@@ -47,6 +46,9 @@ describe('<hydrofoil-shell>', () => {
 
       // then
       expect(getComputedStyle(el).display).to.equal('block')
-      expect(getComputedStyle(el).margin).to.equal('0px')
+      expect(getComputedStyle(el).marginLeft).to.equal('0px')
+      expect(getComputedStyle(el).marginRight).to.equal('0px')
+      expect(getComputedStyle(el).marginTop).to.equal('0px')
+      expect(getComputedStyle(el).marginBottom).to.equal('0px')
   })
 })

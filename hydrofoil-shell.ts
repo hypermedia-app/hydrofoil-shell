@@ -1,6 +1,5 @@
-import {css, html, LitElement, property} from 'lit-element'
-import {TemplateResult} from 'lit-html'
-import {ifDefined} from 'lit-html/directives/if-defined'
+import { css, html, LitElement, property, PropertyValues } from 'lit-element'
+import { ifDefined } from 'lit-html/directives/if-defined'
 import notify from './lib/notify'
 
 import 'ld-navigation/ld-navigator'
@@ -16,12 +15,10 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  * @customElement
  */
 export class HydrofoilShell extends LitElement {
-
     /**
-     * @returns {TemplateResult}
-     * @private
+     * @returns {CSSResult}
      */
-    static get styles() {
+    public static get styles () {
         return css`:host { display: block; margin: 0; } [hidden] { display: none; }`
     }
     /**
@@ -75,7 +72,7 @@ export class HydrofoilShell extends LitElement {
     /**
      * Back-end base URL to which the absolute resource path will be appended when calculating resource identifiers
      */
-    @property({ type: String, attribute: 'base-url'})
+    @property({ type: String, attribute: 'base-url' })
     public baseUrl: string
 
     /**
@@ -92,7 +89,7 @@ export class HydrofoilShell extends LitElement {
      * @param url {string}
      * @returns {Promise}
      */
-    public async loadResource(url) {
+    public async loadResource (url: string) {
         if (!url) {
             return
         }
@@ -118,7 +115,7 @@ export class HydrofoilShell extends LitElement {
         }
     }
 
-    protected updated(props) {
+    protected updated (props: PropertyValues) {
         super.updated(props)
         notify(this, props, 'url')
     }
@@ -130,11 +127,11 @@ export class HydrofoilShell extends LitElement {
      * @param url {string} The resource identifier
      * @returns {Promise<TModel>}
      */
-    protected loadResourceInternal(url: string): Promise<any> {
+    protected loadResourceInternal (url: string): Promise<any> {
         throw new Error('Method not implemented')
     }
 
-    protected render() {
+    protected render () {
         return html`
             <ld-navigator @resource-url-changed="${this.urlChanged}"
                           base="${ifDefined(this.baseUrl)}"
@@ -161,7 +158,7 @@ export class HydrofoilShell extends LitElement {
      *
      * @returns {TemplateResult}
      */
-    protected renderMain() {
+    protected renderMain () {
         return html`<lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>`
     }
 
@@ -170,11 +167,11 @@ export class HydrofoilShell extends LitElement {
      *
      * @returns {TemplateResult}
      */
-    protected renderError() {
+    protected renderError () {
         return html`<pre>${this.lastError && this.lastError.stack}</pre>`
     }
 
-    private urlChanged(e: CustomEvent) {
+    private urlChanged (e: CustomEvent) {
         if (e.detail.value !== '/') {
             this.url = e.detail.value
             this.loadResource(e.detail.value)
