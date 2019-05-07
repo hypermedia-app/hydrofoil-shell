@@ -1,9 +1,8 @@
-import { expect, fixture, html } from '@open-wc/testing'
-
-import {HydrofoilShell} from '../hydrofoil-shell'
+import { expect, fixture } from '@open-wc/testing'
+import { HydrofoilShell } from '../hydrofoil-shell'
 
 class TestShell extends HydrofoilShell {
-  loadResourceInternal(url) {
+  loadResourceInternal () {
     return {}
   }
 }

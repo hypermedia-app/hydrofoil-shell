@@ -1,7 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const merge = require('webpack-merge');
-const bsSettings = require('@open-wc/testing-karma-bs/bs-settings.js');
-const createBaseConfig = require('./karma.conf.js');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const merge = require('webpack-merge')
+const bsSettings = require('@open-wc/testing-karma-bs/bs-settings.js')
+const createBaseConfig = require('./karma.conf.js')
 
 module.exports = config => {
   config.set(
@@ -10,7 +10,7 @@ module.exports = config => {
         project: 'hydrofoil-shell',
       },
     }),
-  );
+  )
 
-  return config;
-};
+  return config
+}
