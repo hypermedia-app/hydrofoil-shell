@@ -1,4 +1,4 @@
-import {html, LitElement, property} from 'lit-element'
+import {css, html, LitElement, property} from 'lit-element'
 import {TemplateResult} from 'lit-html'
 import {ifDefined} from 'lit-html/directives/if-defined'
 import notify from './lib/notify'
@@ -21,8 +21,8 @@ export class HydrofoilShell extends LitElement {
      * @returns {TemplateResult}
      * @private
      */
-    protected get _style() {
-        return html`<style>:host { display: block; margin: 0; } [hidden] { display: none; }/style>`
+    static get styles() {
+        return css`:host { display: block; margin: 0; } [hidden] { display: none; }`
     }
     /**
      * Dispatched when the model has been loaded
@@ -136,7 +136,6 @@ export class HydrofoilShell extends LitElement {
 
     protected render() {
         return html`
-            ${this._style}
             <ld-navigator @resource-url-changed="${this.urlChanged}"
                           base="${ifDefined(this.baseUrl)}"
                           client-base-path="${ifDefined(this.clientBasePath)}"
