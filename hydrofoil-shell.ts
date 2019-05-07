@@ -22,7 +22,7 @@ export class HydrofoilShell extends LitElement {
      * @private
      */
     protected get _style() {
-        return html`<style>:host { display: block; margin: 0 }</style>`
+        return html`<style>:host { display: block; margin: 0; } [hidden] { display: none; }/style>`
     }
     /**
      * Dispatched when the model has been loaded
