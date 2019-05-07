@@ -6,6 +6,7 @@
     "experimentalDecorators": true,
     "declaration": true,
     "noEmitOnError": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "noUnusedLocals": true
   }
 }
