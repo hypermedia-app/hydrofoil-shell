@@ -46,6 +46,9 @@ describe('<hydrofoil-shell>', () => {
 
       // then
       expect(getComputedStyle(el).display).to.equal('block')
-      expect(getComputedStyle(el).margin).to.equal('0px')
+      expect(getComputedStyle(el).marginLeft).to.equal('0px')
+      expect(getComputedStyle(el).marginRight).to.equal('0px')
+      expect(getComputedStyle(el).marginTop).to.equal('0px')
+      expect(getComputedStyle(el).marginBottom).to.equal('0px')
   })
 })
