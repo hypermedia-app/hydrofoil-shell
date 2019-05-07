@@ -38,17 +38,17 @@ describe('<hydrofoil-shell>', () => {
   })
 
   it('should have default display block and no margin', async () => {
-      // given
-      const el = await fixture('<hydrofoil-shell></hydrofoil-shell>')
+    // given
+    const el = await fixture('<hydrofoil-shell></hydrofoil-shell>')
 
-      // when
-      await el.updateComplete
+    // when
+    await el.updateComplete
 
-      // then
-      expect(getComputedStyle(el).display).to.equal('block')
-      expect(getComputedStyle(el).marginLeft).to.equal('0px')
-      expect(getComputedStyle(el).marginRight).to.equal('0px')
-      expect(getComputedStyle(el).marginTop).to.equal('0px')
-      expect(getComputedStyle(el).marginBottom).to.equal('0px')
+    // then
+    expect(getComputedStyle(el).display).to.equal('block')
+    expect(getComputedStyle(el).marginLeft).to.equal('0px')
+    expect(getComputedStyle(el).marginRight).to.equal('0px')
+    expect(getComputedStyle(el).marginTop).to.equal('0px')
+    expect(getComputedStyle(el).marginBottom).to.equal('0px')
   })
 })
