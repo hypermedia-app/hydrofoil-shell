@@ -37,4 +37,16 @@ describe('<hydrofoil-shell>', () => {
     const errorSection = el.renderRoot.querySelector('#error')
     expect(errorSection.offsetParent).to.not.be.null
   })
+
+  it('should have default display block and no margin', async () => {
+      // given
+      const el = await fixture('<hydrofoil-shell></hydrofoil-shell>')
+
+      // when
+      await el.updateComplete
+
+      // then
+      expect(getComputedStyle(el).display).to.equal('block')
+      expect(getComputedStyle(el).margin).to.equal('0px')
+  })
 })
