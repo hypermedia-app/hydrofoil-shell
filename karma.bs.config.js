@@ -6,6 +6,7 @@ const createBaseConfig = require('./karma.conf.js')
 module.exports = config => {
   config.set(
     merge(bsSettings(config), createBaseConfig(config), {
+      hostname: 'bs-local.com',
       browserStack: {
         project: 'hydrofoil-shell',
       },
