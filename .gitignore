@@ -180,4 +180,7 @@ modules.xml
 
 # End of https://www.gitignore.io/api/node,polymer,typings,webstorm+all
 
-**/*.js
+lib/*.js
+/*-*.js
+
+*.js.map

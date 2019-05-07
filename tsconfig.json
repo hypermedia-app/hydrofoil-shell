@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "declaration": true,
-    "noEmitOnError": false
+    "noEmitOnError": false,
+    "sourceMap": true
   }
 }
