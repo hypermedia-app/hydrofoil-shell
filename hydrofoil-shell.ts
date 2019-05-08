@@ -1,4 +1,4 @@
-import { css, html, LitElement, property, PropertyValues } from 'lit-element'
+import { css, CSSResult, CSSResultArray, html, LitElement, property, PropertyValues } from 'lit-element'
 import { ifDefined } from 'lit-html/directives/if-defined'
 import notify from './lib/notify'
 
@@ -18,7 +18,7 @@ export class HydrofoilShell extends LitElement {
     /**
      * @returns {CSSResult}
      */
-    public static get styles () {
+    public static get styles (): CSSResult | CSSResultArray {
         return css`:host { display: block; margin: 0; } [hidden] { display: none; }`
     }
     /**
