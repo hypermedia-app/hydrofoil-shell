@@ -1,9 +1,14 @@
 import { expect, fixture } from '@open-wc/testing'
+import { html } from 'lit-html'
 import { HydrofoilShell } from '../hydrofoil-shell'
 
 class TestShell extends HydrofoilShell {
+  static get properties () {
+    return { fakeModel: { type: String } }
+  }
+
   loadResourceInternal () {
-    return {}
+    return this.fakeModel
   }
 }
 
@@ -12,15 +17,14 @@ customElements.define('hydrofoil-shell', TestShell)
 describe('<hydrofoil-shell>', () => {
   it('displays the "ready" slot when there is no model', async () => {
     // given
-    const el = await fixture('<hydrofoil-shell></hydrofoil-shell>')
+    const el = await fixture(html`<hydrofoil-shell .fakeModel="${null}"></hydrofoil-shell>`)
 
     // when
-    el.state = 'ready'
     await el.updateComplete
 
     // then
-    const readySection = el.renderRoot.querySelector('#ready')
-    expect(readySection.offsetParent).to.not.be.null
+    expect(el.state).to.be.equal('ready')
+    expect(el).shadowDom.to.equalSnapshot()
   })
 
   it('renders error section when state is "error"', async () => {

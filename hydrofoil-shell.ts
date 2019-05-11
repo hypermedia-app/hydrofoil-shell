@@ -100,7 +100,7 @@ export class HydrofoilShell extends LitElement {
             const model = await this.loadResourceInternal(url)
 
             this.model = model
-            this.state = 'loaded'
+            this.state = model ? 'loaded' : 'ready'
             this.isLoading = false
 
             import('@lit-any/lit-any/lit-view')
@@ -143,23 +143,12 @@ export class HydrofoilShell extends LitElement {
             </section>
 
             <section id="main" ?hidden="${this.state !== 'loaded'}">
-                ${this.renderMain()}
+                <lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>
             </section>
 
             <section id="error" ?hidden="${this.state !== 'error'}">
                 ${this.renderError()}
             </section>`
-    }
-
-    /**
-     * Renders the main view element, bound to the loaded resource representation.
-     *
-     * The actual content rendering is delegated to `lit-any` package
-     *
-     * @returns {TemplateResult}
-     */
-    protected renderMain () {
-        return html`<lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>`
     }
 
     /**
