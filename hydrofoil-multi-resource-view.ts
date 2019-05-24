@@ -65,7 +65,7 @@ export default abstract class HydrofoilMultiResourceView extends LitElement {
     }
 
     protected getHeader (model: any) {
-        return model.title || model.id.match(/\/[^/]+\/?$/)
+        return model.title || model.id.match(/\/[^/]+\/?$/) || model.id
     }
 
     /**
