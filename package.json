@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/hydrofoil-shell",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A base for a Hydra-driven application",
   "repository": {
     "type": "git",
@@ -33,11 +33,11 @@
     "@typescript-eslint/parser": "^1.7.0",
     "eslint": "^5.16.0",
     "eslint-plugin-mocha": "^5.3.0",
+    "lit-html": "^1.1.0",
     "remap-istanbul": "^0.13.0",
     "standard": "^12.0.1",
     "typescript": "^3.2.2",
-    "webpack-merge": "^4.1.5",
-    "lit-html": "^1.1.0"
+    "webpack-merge": "^4.1.5"
   },
   "dependencies": {
     "@lit-any/views": "^0.9.1",
