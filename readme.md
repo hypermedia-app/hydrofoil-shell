@@ -10,7 +10,7 @@ Implemented using [`lit-element`][le]
 ## Installation
 
 ```
-yarn add @hydrofoil/hydrofoil-shell
+yarn add @hydrofoil/hydrofoil-shell lit-html
 ```
 
 ## Usage
