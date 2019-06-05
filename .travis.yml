@@ -1,13 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-- 8
+- "8"
 before_install:
 - npm install -g codecov
-before_script:
-- npm run build
 script:
-- npm run pretest
+- npm run test
 - npm run test:bs
 after_success:
 - codecov
