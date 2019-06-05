@@ -1,7 +1,7 @@
 import { css, CSSResult, CSSResultArray, html, LitElement, property, PropertyValues } from 'lit-element'
 import { ifDefined } from 'lit-html/directives/if-defined'
 import notify from './lib/notify'
-
+import '@lit-any/views/lit-view'
 import 'ld-navigation/ld-navigator'
 
 type ConsoleState = 'ready' | 'loaded' | 'error'
@@ -103,7 +103,6 @@ export class HydrofoilShell extends LitElement {
             this.state = model ? 'loaded' : 'ready'
             this.isLoading = false
 
-            import('@lit-any/lit-any/lit-view')
             this.dispatchEvent(new CustomEvent('model-changed', {
                 detail: model,
             }))

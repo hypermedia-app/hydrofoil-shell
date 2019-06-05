@@ -39,7 +39,7 @@
     "webpack-merge": "^4.1.5"
   },
   "dependencies": {
-    "@lit-any/lit-any": "^0.8.1",
+    "@lit-any/views": "^0.9.0-a3",
     "ld-navigation": "^0.5.2",
     "lit-element": "^2.0.0"
   },
