@@ -12,12 +12,12 @@ class TestShell extends HydrofoilShell {
   }
 }
 
-customElements.define('hydrofoil-shell', TestShell)
+customElements.define('shapshot-shell', TestShell)
 
 describe('<hydrofoil-shell>', () => {
   it('displays the "ready" slot when there is no model', async () => {
     // given
-    const el = await fixture(html`<hydrofoil-shell .fakeModel="${null}"></hydrofoil-shell>`)
+    const el = await fixture(html`<shapshot-shell .fakeModel="${null}"></shapshot-shell>`)
 
     // when
     await el.updateComplete
