@@ -1,22 +1,20 @@
 import { expect, fixture } from '@open-wc/testing'
+import { customElement } from 'lit-element'
 import { HydrofoilShell } from '../hydrofoil-shell'
 
+@customElement('hydrofoil-shell')
 class TestShell extends HydrofoilShell {
-  static get properties () {
-    return { fakeModel: { type: String } }
-  }
+  public fakeModel?: string
 
-  loadResourceInternal () {
+  protected async loadResourceInternal() {
     return this.fakeModel
   }
 }
 
-customElements.define('hydrofoil-shell', TestShell)
-
 describe('<hydrofoil-shell>', () => {
   it('renders error section when state is "error"', async () => {
     // given
-    const el = await fixture('<hydrofoil-shell></hydrofoil-shell>')
+    const el = await fixture<TestShell>('<hydrofoil-shell></hydrofoil-shell>')
 
     // when
     el.state = 'error'
@@ -24,13 +22,13 @@ describe('<hydrofoil-shell>', () => {
     await el.updateComplete
 
     // then
-    const errorSection = el.renderRoot.querySelector('#error')
+    const errorSection = el.renderRoot.querySelector('#error') as any
     expect(errorSection.offsetParent).to.not.be.null
   })
 
   it('should have default display block and no margin', async () => {
     // given
-    const el = await fixture('<hydrofoil-shell></hydrofoil-shell>')
+    const el = await fixture<TestShell>('<hydrofoil-shell></hydrofoil-shell>')
 
     // when
     await el.updateComplete

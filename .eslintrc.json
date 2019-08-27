@@ -1,8 +1,10 @@
 {
   "root": true,
   "extends": [
-    "standard",
-    "plugin:@typescript-eslint/recommended"
+    "@open-wc/eslint-config",
+    "eslint-config-prettier",
+    "plugin:@typescript-eslint/recommended",
+    "standard"
   ],
   "env": {
     "browser": true
@@ -14,12 +16,32 @@
   },
   "plugins": [
     "@typescript-eslint/eslint-plugin",
-    "mocha"
+    "lit"
   ],
   "rules": {
-    "quotes": ["error", "single", { "avoidEscape": true }],
-    "comma-dangle": ["error", "always-multiline"],
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/indent": "off"
-  }
+    "indent": "off",
+    "import/no-unresolved": "warn",
+    "import/extensions": "off",
+    "space-before-function-paren": [
+      "error",
+      {
+        "named": "never"
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "@typescript-eslint/no-var-requires": "warn",
+    "@typescript-eslint/indent": ["error", 2],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}]
+  },
+  "overrides": [
+    {
+      "files": ["test/*.ts", "snapshot/*.ts"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
 }

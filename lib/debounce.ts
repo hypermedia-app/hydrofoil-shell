@@ -1,10 +1,10 @@
 export default function (fn: () => {}, time: number) {
-    let timeout: number
+  let timeout: number
 
-    return function (): void {
-        const functionCall = () => fn.apply(this, [ ...arguments ])
+  return function (this: unknown, ...args: []): void {
+    const functionCall = () => fn.apply(this, args)
 
-        clearTimeout(timeout)
-        timeout = window.setTimeout(functionCall, time)
-    }
+    clearTimeout(timeout)
+    timeout = window.setTimeout(functionCall, time)
+  }
 }

@@ -1,23 +1,26 @@
 import { expect, fixture } from '@open-wc/testing'
 import { html } from 'lit-html'
+import { customElement } from 'lit-element'
 import { HydrofoilShell } from '../hydrofoil-shell'
+import '../hydrofoil-shell.ts'
 
+@customElement('snapshot-shell')
 class TestShell extends HydrofoilShell {
-  static get properties () {
-    return { fakeModel: { type: String } }
-  }
+  public fakeModel?: string
 
-  loadResourceInternal () {
+  protected async loadResourceInternal() {
     return this.fakeModel
   }
 }
 
-customElements.define('shapshot-shell', TestShell)
-
 describe('<hydrofoil-shell>', () => {
   it('displays the "ready" slot when there is no model', async () => {
     // given
-    const el = await fixture(html`<shapshot-shell .fakeModel="${null}"></shapshot-shell>`)
+    const el = await fixture<TestShell>(
+      html`
+        <snapshot-shell .fakeModel="${null}"></snapshot-shell>
+      `,
+    )
 
     // when
     await el.updateComplete
