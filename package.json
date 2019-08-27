@@ -10,33 +10,44 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "pretest": "eslint --ext *.ts,*.js .",
     "prepare": "npm run build",
+    "lint:eslint": "eslint --ext .js,.html,.ts . --quiet --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .js,.html,.ts . --quiet --fix --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.{js,ts}\" --check --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.{js,ts}\" --write --ignore-path .gitignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier",
     "test": "karma start --coverage",
     "test:watch": "karma start --auto-watch=true --single-run=false",
     "test:update-snapshots": "karma start --update-snapshots",
     "test:prune-snapshots": "karma start --prune-snapshots",
-    "test:legacy": "karma start --legacy --coverage",
-    "test:legacy:watch": "karma start --legacy --auto-watch=true --single-run=false",
-    "test:bs": "karma start karma.bs.config.js --legacy --grep 'test/**/*.test.js'",
-    "posttest": "cat ./coverage/coverage-final.json | yarn remap-istanbul -o ./coverage/lcov.info -t lcovonly -e ts"
+    "test:legacy": "karma start --compatibility all --coverage",
+    "test:legacy:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
+    "test:bs": "karma start karma.bs.config.js --compatibility all --coverage --grep 'test/**/*.test.ts'",
+    "release": "standard-version"
   },
-  "files": [
-    "**/*.js",
-    "**/*.d.ts"
-  ],
   "devDependencies": {
-    "@open-wc/testing": "^0.12.1",
-    "@open-wc/testing-karma": "^2.0.1",
-    "@open-wc/testing-karma-bs": "^1.1.1",
-    "@typescript-eslint/eslint-plugin": "^1.7.0",
-    "@typescript-eslint/parser": "^1.7.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@open-wc/eslint-config": "^1.1.1",
+    "@open-wc/prettier-config": "^0.1.10",
+    "@open-wc/testing": "^2.3.2",
+    "@open-wc/testing-karma": "^3.1.28",
+    "@open-wc/testing-karma-bs": "^1.1.53",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^5.16.0",
-    "eslint-plugin-mocha": "^5.3.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint-plugin-lit": "^1.2.0",
     "lit-html": "^1.1.0",
-    "remap-istanbul": "^0.13.0",
-    "standard": "^12.0.1",
-    "typescript": "^3.2.2",
+    "husky": "^3.0.3",
+    "lint-staged": "^9.2.1",
+    "standard": "^14.0.2",
+    "standard-version": "^7.0.0",
+    "typescript": "^3.5.3",
     "webpack-merge": "^4.1.5"
   },
   "dependencies": {
@@ -47,5 +58,27 @@
   "bugs": {
     "url": "https://github.com/hypermedia-app/hydrofoil-shell/issues"
   },
-  "homepage": "https://github.com/hypermedia-app/hydrofoil-shell#readme"
+  "homepage": "https://github.com/hypermedia-app/hydrofoil-shell#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && tsc --noEmit"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }
