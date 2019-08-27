@@ -11,6 +11,7 @@ module.exports = config => {
         // npm run test -- --grep test/foo/bar.test.js
         // npm run test -- --grep test/bar/*
         { pattern: config.grep ? config.grep : 'test/**/*.test.ts', type: 'module' },
+        { pattern: config.grep ? config.grep : 'snapshot/**/*.test.ts', type: 'module' },
       ],
 
       // you can overwrite/extend the config further
