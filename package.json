@@ -34,7 +34,7 @@
     "@commitlint/config-conventional": "^8.1.0",
     "@open-wc/eslint-config": "^1.1.1",
     "@open-wc/prettier-config": "^0.1.10",
-    "@open-wc/testing": "^2.3.2",
+    "@open-wc/testing": "^2.3.3",
     "@open-wc/testing-karma": "^3.1.28",
     "@open-wc/testing-karma-bs": "^1.1.53",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
