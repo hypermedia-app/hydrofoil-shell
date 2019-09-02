@@ -13,6 +13,7 @@ module.exports = config => {
 
   // eslint-disable-next-line no-param-reassign
   config.concurrency = 1
+  config.browsers.splice(config.browsers.indexOf('bs_win10_edge_latest'), 1)
 
   return config
 }
