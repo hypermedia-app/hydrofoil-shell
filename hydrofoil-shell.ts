@@ -7,10 +7,9 @@ import {
   property,
   PropertyValues,
 } from 'lit-element'
-import { ifDefined } from 'lit-html/directives/if-defined'
+import { ResourceScope, StateMapper } from 'ld-navigation'
 import notify from './lib/notify'
 import '@lit-any/views/lit-view'
-import 'ld-navigation/ld-navigator'
 
 type ConsoleState = 'ready' | 'loaded' | 'error'
 
@@ -22,7 +21,7 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  *
  * @customElement
  */
-export class HydrofoilShell extends LitElement {
+export class HydrofoilShell extends ResourceScope(LitElement) {
   /**
    * @returns {CSSResult}
    */
@@ -50,13 +49,13 @@ export class HydrofoilShell extends LitElement {
    */
 
   /**
-   * Controls whether HTML5 History API or hash URLs are used for browser location
+   * Last retrieved resource representation
    */
-  @property({ type: Boolean, attribute: 'use-hash-urls' })
-  public useHashUrls = false
+  @property({ type: Object, attribute: false })
+  public representation: any
 
   /**
-   * Current resource representation
+   * Current model used for rendering
    */
   @property({ type: Object, attribute: false })
   public model: any
@@ -132,6 +131,14 @@ export class HydrofoilShell extends LitElement {
     }
   }
 
+  createStateMapper() {
+    return new StateMapper({
+      baseUrl: this.baseUrl,
+      clientBasePath: this.clientBasePath,
+      useHashFragment: this.usesHashFragment,
+    })
+  }
+
   protected updated(props: PropertyValues) {
     super.updated(props)
     notify(this, props, 'url')
@@ -151,13 +158,6 @@ export class HydrofoilShell extends LitElement {
 
   protected render() {
     return html`
-      <ld-navigator
-        @resource-url-changed="${this.urlChanged}"
-        base="${ifDefined(this.baseUrl)}"
-        client-base-path="${ifDefined(this.clientBasePath)}"
-        ?use-hash-fragment="${ifDefined(this.useHashUrls)}"
-      ></ld-navigator>
-
       <section id="ready" ?hidden="${this.state !== 'ready'}">
         <slot></slot>
       </section>
@@ -183,10 +183,10 @@ export class HydrofoilShell extends LitElement {
     `
   }
 
-  private urlChanged(e: CustomEvent) {
-    if (e.detail.value !== '/') {
-      this.url = e.detail.value
-      this.loadResource(e.detail.value)
+  onResourceUrlChanged(newValue: string) {
+    if (newValue !== '/') {
+      this.url = newValue
+      this.loadResource(newValue)
     }
   }
 }
