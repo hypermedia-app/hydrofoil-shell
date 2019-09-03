@@ -6,6 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/hypermedia-app/hydrofoil-shell.git"
   },
+  "files": [
+    "**/*.js",
+    "**/*.d.ts"
+  ],
   "author": "tpluscode",
   "license": "MIT",
   "scripts": {
