@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@lit-any/views": "^0.9.1",
-    "ld-navigation": "git+https://github.com/tpluscode/ld-navigation.git#more-mixins",
+    "ld-navigation": "^1.0.0-2",
     "lit-element": "^2.0.0"
   },
   "bugs": {

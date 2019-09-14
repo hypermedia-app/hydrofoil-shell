@@ -3,8 +3,6 @@
 #### `displays the "ready" slot when there is no model`
 
 ```html
-<ld-navigator>
-</ld-navigator>
 <section id="ready">
   <slot>
   </slot>
