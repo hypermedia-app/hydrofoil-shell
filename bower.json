@@ -1,4 +1,5 @@
 {
   "name": "@hydrofoil/hydrofoil-shell",
-  "license": "MIT"
+  "license": "MIT",
+  "version": "0.2.3"
 }
