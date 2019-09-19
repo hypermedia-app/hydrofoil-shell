@@ -183,6 +183,13 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
     `
   }
 
+  /**
+   * Renders a lit-view element to render the main model.
+   *
+   * By default uses `hydrofoil-shell` and ignores missing templates.
+   *
+   * @returns {TemplateResult}
+   */
   protected renderMain() {
     return html`
       <lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>
