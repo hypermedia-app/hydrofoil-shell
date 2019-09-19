@@ -163,7 +163,7 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
       </section>
 
       <section id="main" ?hidden="${this.state !== 'loaded'}">
-        <lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>
+        ${this.renderMain()}
       </section>
 
       <section id="error" ?hidden="${this.state !== 'error'}">
@@ -180,6 +180,12 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
   protected renderError() {
     return html`
       <pre>${this.lastError && this.lastError.stack}</pre>
+    `
+  }
+
+  protected renderMain() {
+    return html`
+      <lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>
     `
   }
 
