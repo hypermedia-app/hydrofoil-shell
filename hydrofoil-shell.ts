@@ -52,13 +52,13 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
    * Last retrieved resource representation
    */
   @property({ type: Object, attribute: false })
-  public representation: any
+  public lastResponse: any
 
   /**
    * Current model used for rendering
    */
   @property({ type: Object, attribute: false })
-  public model: any
+  public model?: any
 
   /**
    * The current resource identifier
@@ -98,8 +98,6 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
   @property({ type: String, attribute: 'client-base' })
   public clientBasePath?: string
 
-  public lastResponse?: Response
-
   /**
    * Loads the resource identified by the given URL
    *
@@ -114,17 +112,15 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
     try {
       await this.updateComplete
       this.isLoading = true
-      const model = await this.loadResourceInternal(url)
+      const resource = await this.loadResourceInternal(url)
 
-      this.model = model
-      this.state = model ? 'loaded' : 'ready'
+      this.lastResponse = resource
+      this.state = resource ? 'loaded' : 'ready'
       this.isLoading = false
 
-      this.dispatchEvent(
-        new CustomEvent('model-changed', {
-          detail: model,
-        }),
-      )
+      if (resource) {
+        this.onResourceLoaded(resource)
+      }
     } catch (e) {
       console.error(e)
       this.lastError = e
@@ -154,7 +150,7 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
    * @returns {Promise<TModel>}
    */
   // eslint-disable-next-line class-methods-use-this
-  protected loadResourceInternal(url: string): Promise<any> {
+  protected loadResourceInternal<T>(url: string): Promise<any> {
     throw new Error('Method not implemented')
   }
 
@@ -196,6 +192,11 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
     return html`
       <lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>
     `
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  protected onResourceLoaded(resource: unknown) {
+    throw new Error('Method not implemented')
   }
 
   onResourceUrlChanged(newValue: string) {
