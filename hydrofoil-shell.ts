@@ -98,6 +98,8 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
   @property({ type: String, attribute: 'client-base' })
   public clientBasePath?: string
 
+  public lastResponse?: Response
+
   /**
    * Loads the resource identified by the given URL
    *
