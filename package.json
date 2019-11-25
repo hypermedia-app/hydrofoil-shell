@@ -66,6 +66,7 @@
   "homepage": "https://github.com/hypermedia-app/hydrofoil-shell#readme",
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged && tsc --noEmit"
     }
   },
