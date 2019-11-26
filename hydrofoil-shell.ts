@@ -8,6 +8,7 @@ import {
   PropertyValues,
 } from 'lit-element'
 import { ResourceScope, StateMapper } from 'ld-navigation'
+import { getAllImplementationsOf } from '@tpluscode/all-implementations-of'
 import notify from './lib/notify'
 import '@lit-any/views/lit-view'
 
@@ -119,7 +120,7 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
       this.isLoading = false
 
       if (resource) {
-        this.onResourceLoaded(resource)
+        getAllImplementationsOf(this, 'onResourceLoaded').forEach(fn => fn.call(this, resource))
       }
     } catch (e) {
       console.error(e)
@@ -192,11 +193,6 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
     return html`
       <lit-view .value="${this.model}" ignore-missing template-scope="hydrofoil-shell"></lit-view>
     `
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  protected onResourceLoaded(resource: unknown) {
-    throw new Error('Method not implemented')
   }
 
   onResourceUrlChanged(newValue: string) {
