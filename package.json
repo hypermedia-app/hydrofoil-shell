@@ -42,7 +42,6 @@
     "@open-wc/testing": "^2.3.3",
     "@open-wc/testing-karma": "^3.1.31",
     "@open-wc/testing-karma-bs": "^1.1.56",
-    "@tpluscode/all-implementations-of": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^5.16.0",
@@ -58,7 +57,11 @@
   },
   "dependencies": {
     "@lit-any/views": "^0.9.1",
-    "ld-navigation": "^1.1.0",
+    "@thi.ng/api": "^6.5.0",
+    "@thi.ng/rstream-log": "^3.1.6",
+    "@thi.ng/rstream": "^2.5.6",
+    "@tpluscode/all-implementations-of": "^1.0.1",
+    "ld-navigation": "^1.1.1",
     "lit-element": "^2.0.0"
   },
   "bugs": {

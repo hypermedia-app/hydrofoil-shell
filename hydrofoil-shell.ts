@@ -9,10 +9,16 @@ import {
 } from 'lit-element'
 import { ResourceScope, StateMapper } from 'ld-navigation'
 import { getAllImplementationsOf } from '@tpluscode/all-implementations-of'
+import { LogLevel } from '@thi.ng/api'
+import { formatString, Logger, writeConsole } from '@thi.ng/rstream-log'
 import notify from './lib/notify'
 import '@lit-any/views/lit-view'
 
 type ConsoleState = 'ready' | 'loaded' | 'error'
+const levels = Object.entries(LogLevel).filter(([k]: any[]) => typeof LogLevel[k] === 'number') as [
+  string,
+  LogLevel,
+][]
 
 /**
  * Base element class which manages top-level application state, routes the application by binding the browser location
@@ -23,6 +29,14 @@ type ConsoleState = 'ready' | 'loaded' | 'error'
  * @customElement
  */
 export class HydrofoilShell extends ResourceScope(LitElement) {
+  protected _log: Logger
+
+  constructor() {
+    super()
+    this._log = new Logger('hydrofoil-shell', LogLevel.SEVERE)
+    this._log.subscribe(writeConsole(), formatString())
+  }
+
   /**
    * @returns {CSSResult}
    */
@@ -99,6 +113,21 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
   @property({ type: String, attribute: 'client-base' })
   public clientBasePath?: string
 
+  static get observedAttributes() {
+    return [...super.observedAttributes, 'log-level']
+  }
+
+  attributeChangedCallback(name: string, old: string | null, value: string | null) {
+    super.attributeChangedCallback && super.attributeChangedCallback(name, old, value)
+    if (name === 'log-level') {
+      const logLevel = levels.find(
+        ([key]) => value !== null && key.toUpperCase() === value.toUpperCase(),
+      )
+
+      this._log.level = logLevel ? logLevel[1] : LogLevel.SEVERE
+    }
+  }
+
   /**
    * Loads the resource identified by the given URL
    *
@@ -110,6 +139,7 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
       return
     }
 
+    this._log.debug('Loading resource', url)
     try {
       await this.updateComplete
       this.isLoading = true
@@ -120,10 +150,18 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
       this.isLoading = false
 
       if (resource) {
-        getAllImplementationsOf(this, 'onResourceLoaded').forEach(fn => fn.call(this, resource))
+        getAllImplementationsOf(this, 'onResourceLoaded').forEach(fn => {
+          try {
+            fn.call(this, resource)
+          } catch (e) {
+            this._log.severe('Failed to call', fn.name)
+            this._log.error(e)
+          }
+        })
       }
     } catch (e) {
-      console.error(e)
+      this._log.severe('Failed to load resource')
+      this._log.error(e)
       this.lastError = e
       this.state = 'error'
       this.isLoading = false
