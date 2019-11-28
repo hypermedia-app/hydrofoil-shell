@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/hypermedia-app/hydrofoil-shell/compare/v0.2.5...v0.3.0) (2019-11-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* the model property will not be set automatically but requires handling in onResourceLoaded
+
+### Bug Fixes
+
+* use shared package to call every onResourceLoaded implementation ([80dfc19](https://github.com/hypermedia-app/hydrofoil-shell/commit/80dfc19))
+
+
+### Features
+
+* move setting model to ultimate implementation ([adceb79](https://github.com/hypermedia-app/hydrofoil-shell/commit/adceb79))
+
 ### [0.2.5](https://github.com/hypermedia-app/hydrofoil-shell/compare/v0.2.4...v0.2.5) (2019-11-25)
 
 
