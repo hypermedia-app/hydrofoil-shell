@@ -168,7 +168,7 @@ export class HydrofoilShell extends ResourceScope(LitElement) {
     }
   }
 
-  createStateMapper() {
+  createStateMapper(): StateMapper | Promise<StateMapper> {
     return new StateMapper({
       baseUrl: this.baseUrl,
       clientBasePath: this.clientBasePath,
