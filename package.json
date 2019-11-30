@@ -9,7 +9,8 @@
   "files": [
     "hydrofoil-*.js",
     "hydrofoil-*.d.ts",
-    "lib/"
+    "lib/**/*.js",
+    "lib/**/*.d.ts"
   ],
   "author": "tpluscode",
   "license": "MIT",
