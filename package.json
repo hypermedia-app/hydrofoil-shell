@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/hydrofoil-shell",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A base for a Hydra-driven application",
   "repository": {
     "type": "git",
