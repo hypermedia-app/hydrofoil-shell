@@ -1,0 +1,21 @@
+{
+  "name": "@hydrofoil/shell",
+  "version": "0.0.0",
+  "type": "module",
+  "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypermedia-app/hydrofoil-shell.git",
+    "directory": "packages/shell"
+  },
+  "scripts": {
+    "prepack": "tsc"
+  },
+  "dependencies": {
+    "@captaincodeman/rdx": "^1.0.0-rc.9"
+  },
+  "exports": {
+    "./store": "./store.js"
+  }
+}
