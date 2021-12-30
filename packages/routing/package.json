@@ -15,8 +15,7 @@
   },
   "dependencies": {
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@hydrofoil/shell": "^0.0.0",
-    "@mapbox/link-hijacker": "^1.1.0",
+    "@mapbox/link-hijacker": "data-mazes/link-hijacker#composed-path",
     "url-state": "^2.0.3"
   },
   "devDependencies": {

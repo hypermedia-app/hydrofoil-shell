@@ -1,4 +1,4 @@
-import { isAuthenticated } from './isAuthenticted'
+import { isAuthenticated } from './isAuthenticted.js'
 
 export default {
   isAuthenticated,

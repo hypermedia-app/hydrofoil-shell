@@ -40,7 +40,7 @@ export function prepareEffects(options: Options) {
       async logIn({ returnTo }: { returnTo?: string | NamedNode }) {
         const {
           auth: { auth0 },
-          appResources: { current },
+          core: { contentResource },
         } = store.getState()
 
         let resourceId: string | undefined
@@ -49,7 +49,7 @@ export function prepareEffects(options: Options) {
         } else {
           resourceId = returnTo && 'termType' in returnTo
             ? returnTo.value
-            : current?.id.value
+            : contentResource?.id.value
         }
 
         await auth0?.loginWithRedirect({

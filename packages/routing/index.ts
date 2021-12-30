@@ -23,6 +23,13 @@ export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => 
     return `${appPath}/${href}`
   }
 
+  function goTo(href: string) {
+    const path = getResourcePath(href)
+    if (path !== url.pathname) {
+      url.push(path)
+    }
+  }
+
   return {
     model: {
       state: {},
@@ -31,6 +38,7 @@ export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => 
           return { ...state, resource }
         },
       },
+      effects: () => ({ goTo }),
     },
     onStore(store) {
       const dispatch = store.dispatch.routing as unknown as RoutingDispatch
@@ -42,12 +50,7 @@ export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => 
       }
 
       url.addEventListener('change', urlChanged)
-      linkHijacker.hijack(({ href }: { href: string}) => {
-        const path = getResourcePath(href)
-        if (path !== url.pathname) {
-          url.push(path)
-        }
-      })
+      linkHijacker.hijack(({ href }: { href: string }) => goTo(href))
 
       queueMicrotask(urlChanged)
     },

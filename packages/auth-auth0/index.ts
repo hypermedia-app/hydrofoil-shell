@@ -12,7 +12,7 @@ type E = ReturnType<ReturnType<typeof prepareEffects>>
 
 declare module '@hydrofoil/shell-auth' {
   interface AuthState {
-    auth0: Auth0Client
+    auth0?: Auth0Client
     referrer?: string
   }
 

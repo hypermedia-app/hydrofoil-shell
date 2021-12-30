@@ -1,34 +1,82 @@
 import { createModel } from '@captaincodeman/rdx'
 import { Model, Store } from '@hydrofoil/shell/store'
-import reducers from './lib/reducers'
+import { Term } from '@rdfjs/types'
+import type { ResponseWrapper } from 'alcaeus/ResponseWrapper'
+import type { ResourceRepresentation } from 'alcaeus/ResourceRepresentation'
+import TermMap from '@rdf-esm/term-map'
+import { NamedNode } from 'rdf-js'
+import { namedNode } from '@rdf-esm/data-model'
+import type { Resource, Error } from 'alcaeus'
+import { hydra } from '@tpluscode/rdf-ns-builders/strict'
+import reducers from './lib/reducers.js'
 
-interface Options {
-  root: string
+type RepresentationState = { loading: true; success: false }
+| {
+  loading: false
+  success: true
+  response: ResponseWrapper
+  representation: ResourceRepresentation | undefined
+  root: Resource | undefined | null
+}
+| {
+  loading: false
+  success: false
+  response: ResponseWrapper | undefined
+  error: Error | undefined
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface ResourceState {
-
+export interface ResourceState {
+  representations: Map<Term, RepresentationState>
 }
 
-type R = typeof reducers
-// eslint-disable-next-line
-export interface Reducers extends R {
+interface RequestCompleted {
+  id: NamedNode
+  response?: ResponseWrapper
+  representation?: ResourceRepresentation
 }
 
-export default ({ root }: Options) => createModel({
+function effects(store: Store) {
+  const dispatch = store.getDispatch()
+
+  return {
+    async load(arg: string | NamedNode) {
+      const { client } = store.getState().core
+
+      if (!client) {
+        return
+      }
+
+      const id = typeof arg === 'string' ? namedNode(arg) : arg
+
+      dispatch.resource.loading(id)
+      const response = await client.loadResource(id)
+
+      dispatch.resource.requestCompleted({ id, ...response })
+    },
+    requestCompleted({ id, response, representation }: RequestCompleted) {
+      if (response?.xhr.ok) {
+        dispatch.resource.succeeded({ id, response, representation })
+      } else {
+        const [error] = representation?.ofType<Error>(hydra.Error) || []
+        dispatch.resource.failed({ id, response, error })
+      }
+    },
+    'routing/resource': (id: string) => {
+      dispatch.resource.load(id)
+    },
+  }
+}
+
+export default createModel({
   state: <ResourceState>{
-    root,
+    representations: new TermMap(),
   },
   reducers,
-  effects(store: Store) {
-    return {
-    }
-  },
+  effects,
 })
 
 declare module '@captaincodeman/rdx/typings/models' {
   interface Models {
-    representations: Model<ResourceState, Reducers>
+    resource: Model<ResourceState, typeof reducers, ReturnType<typeof effects>>
   }
 }

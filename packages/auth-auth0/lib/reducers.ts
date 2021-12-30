@@ -1,4 +1,4 @@
-import { setClient } from './setClient'
+import { setClient } from './setClient.js'
 
 export default {
   setClient,
