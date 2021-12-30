@@ -10,6 +10,9 @@ export type State = rdx.StoreState<rdx.Config>
 export type Dispatch = rdx.StoreDispatch<rdx.Config>
 export type Store = rdx.ModelStore<Dispatch, State>
 
-export function create<T extends Record<string, rdx.Model>>(models: rdx.Models & T) {
-  return rdx.createStore({ models })
+export function create<T extends Record<string, rdx.Model>>(
+  models: rdx.Models & T,
+  plugins?: rdx.Plugins,
+) {
+  return rdx.createStore({ models, plugins })
 }

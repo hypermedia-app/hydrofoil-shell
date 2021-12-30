@@ -1,0 +1,26 @@
+{
+  "name": "@hydrofoil/shell-routing",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Store model to manage browser URL in relation to loaded resources",
+  "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypermedia-app/hydrofoil-shell.git",
+    "directory": "packages/routing"
+  },
+  "scripts": {
+    "prepack": "tsc"
+  },
+  "dependencies": {
+    "@captaincodeman/rdx": "^1.0.0-rc.9",
+    "@hydrofoil/shell": "^0.0.0",
+    "@mapbox/link-hijacker": "^1.1.0",
+    "url-state": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/url-state": "^2.0.0",
+    "@types/mapbox__link-hijacker": "^1.1.0"
+  }
+}
