@@ -1,6 +1,7 @@
 import type { Plugin } from '@captaincodeman/rdx'
 import url from 'url-state'
 import linkHijacker from '@mapbox/link-hijacker'
+import type { Model } from '@hydrofoil/shell/store'
 
 interface Options {
   appPath?: string
@@ -8,6 +9,29 @@ interface Options {
 
 interface RoutingDispatch {
   resource(resource: string): void
+}
+
+interface Effects {
+  goTo(href: string): void
+}
+
+interface RoutingState {
+  resource: string
+}
+
+const reducers = {
+  resource(state: any, resource: string) {
+    return { ...state, resource }
+  },
+}
+
+declare module '@captaincodeman/rdx/typings/models' {
+  interface Models {
+    routing: Model<RoutingState,
+    typeof reducers,
+    Effects
+    >
+  }
 }
 
 export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => {
@@ -33,11 +57,7 @@ export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => 
   return {
     model: {
       state: {},
-      reducers: {
-        resource(state: any, resource: string) {
-          return { ...state, resource }
-        },
-      },
+      reducers,
       effects: () => ({ goTo }),
     },
     onStore(store) {
