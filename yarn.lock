@@ -503,10 +503,9 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
-"@mapbox/link-hijacker@^1.1.0":
+"@mapbox/link-hijacker@data-mazes/link-hijacker#composed-path":
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/link-hijacker/-/link-hijacker-1.1.0.tgz#f14a68edabe45424d8bec7375ad13e18cac22bf8"
-  integrity sha512-Y2Qm9zMFX8Png7fPkjoOfA7d5hs+GR7QRawyb47OgHUOtaeQA4Xa/cPvTpOLNLBGte1mCwXXJw42B4oooEIk5A==
+  resolved "https://codeload.github.com/data-mazes/link-hijacker/tar.gz/31f2c661694c2f635b2bf9d6ba40a3b5df4f3a31"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
