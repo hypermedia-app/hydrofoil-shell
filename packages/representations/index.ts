@@ -51,12 +51,16 @@ function effects(store: Store) {
   return {
     async load(arg: string | NamedNode) {
       const { client } = store.getState().core
+      const { representations } = store.getState().resource
 
       if (!client) {
         return
       }
 
       const id = typeof arg === 'string' ? namedNode(arg) : arg
+      if (representations.get(id)?.loading === true) {
+        return
+      }
 
       dispatch.resource.loading(id)
       const response = await client.loadResource(id)
