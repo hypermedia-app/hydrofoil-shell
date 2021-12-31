@@ -23,6 +23,11 @@ declare module '@captaincodeman/rdx/typings/models' {
   }
 }
 
+interface SetContentResource {
+  id?: Term
+  pointer: GraphPointer
+}
+
 const reducers = {
   clientReady(state: CoreState, client: HydraClient): CoreState {
     return {
@@ -38,11 +43,11 @@ const reducers = {
       },
     }
   },
-  setContentResource(state: CoreState, pointer: GraphPointer): CoreState {
+  setContentResource(state: CoreState, { id, pointer }: SetContentResource): CoreState {
     return {
       ...state,
       contentResource: {
-        id: pointer.term,
+        id: id || pointer.term,
         pointer,
       },
     }
