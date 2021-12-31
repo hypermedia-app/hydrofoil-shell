@@ -49,7 +49,8 @@ export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => 
 
   function goTo(href: string) {
     const path = getResourcePath(href)
-    if (path !== url.pathname) {
+    const current = url.pathname + url.search + url.hash
+    if (path !== current) {
       url.push(path)
     }
   }
