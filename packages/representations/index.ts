@@ -10,18 +10,28 @@ import type { Resource, Error } from 'alcaeus'
 import { hydra } from '@tpluscode/rdf-ns-builders/strict'
 import reducers from './lib/reducers.js'
 
-type RepresentationState = { loading: true; success: false }
+type RepresentationState = {
+  loading: true
+  success: false
+  response?: undefined
+  representation?: undefined
+  root?: undefined
+  error?: undefined
+}
 | {
   loading: false
   success: true
   response: ResponseWrapper
   representation: ResourceRepresentation | undefined
   root: Resource | undefined | null
+  error?: undefined
 }
 | {
   loading: false
   success: false
   response: ResponseWrapper | undefined
+  representation?: undefined
+  root?: undefined
   error: Error | undefined
 }
 
