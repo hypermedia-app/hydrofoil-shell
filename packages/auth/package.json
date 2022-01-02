@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/shell-auth",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "type": "module",
   "description": "Abstract authentication state module",
   "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@hydrofoil/shell-core": "^0.0.1",
+    "@hydrofoil/shell-core": "^0.1.0",
     "@rdfjs/types": "^1.0.1"
   }
 }

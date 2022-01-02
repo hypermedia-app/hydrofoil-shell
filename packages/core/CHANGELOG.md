@@ -1,5 +1,11 @@
 # @hydrofoil/shell-core
 
+## 0.1.0
+
+### Minor Changes
+
+- aa0b42b: Change how store is configured and typed
+
 ## 0.0.1
 
 ### Patch Changes

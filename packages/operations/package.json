@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/shell-operations",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "description": "Store model to manage hydra operations",
   "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@hydrofoil/shell-core": "^0.0.1",
+    "@hydrofoil/shell-core": "^0.1.0",
     "@rdfjs/types": "^1.0.1",
     "@rdf-esm/term-map": "^0.5.1",
     "@tpluscode/rdf-ns-builders": "^1",

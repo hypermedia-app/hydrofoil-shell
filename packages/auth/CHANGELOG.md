@@ -1,5 +1,16 @@
 # @hydrofoil/shell-auth
 
+## 0.3.0
+
+### Minor Changes
+
+- aa0b42b: Change how store is configured and typed
+
+### Patch Changes
+
+- Updated dependencies [aa0b42b]
+  - @hydrofoil/shell-core@0.1.0
+
 ## 0.2.1
 
 ### Patch Changes

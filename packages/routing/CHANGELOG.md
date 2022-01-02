@@ -1,5 +1,11 @@
 # @hydrofoil/shell-routing
 
+## 0.2.0
+
+### Minor Changes
+
+- aa0b42b: Change how store is configured and typed
+
 ## 0.1.1
 
 ### Patch Changes
