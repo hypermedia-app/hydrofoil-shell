@@ -1,5 +1,12 @@
 # @hydrofoil/shell-routing
 
+## 0.2.1
+
+### Patch Changes
+
+- c84ad44: Do not package .ts sources
+- c3ee465: Let plugin type be inferred
+
 ## 0.2.0
 
 ### Minor Changes
