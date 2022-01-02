@@ -9,6 +9,12 @@
     "url": "git+https://github.com/hypermedia-app/hydrofoil-shell.git",
     "directory": "packages/auth-auth0"
   },
+  "files": [
+    "**/*.js",
+    "**/*.d.ts",
+    "**/*.js.map",
+    "**/*.d.ts.map"
+  ],
   "scripts": {
     "prepack": "tsc"
   },
