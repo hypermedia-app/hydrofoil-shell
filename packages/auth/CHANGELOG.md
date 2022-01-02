@@ -1,5 +1,13 @@
 # @hydrofoil/shell-auth
 
+## 0.3.1
+
+### Patch Changes
+
+- c84ad44: Do not package .ts sources
+- Updated dependencies [c84ad44]
+  - @hydrofoil/shell-core@0.1.1
+
 ## 0.3.0
 
 ### Minor Changes

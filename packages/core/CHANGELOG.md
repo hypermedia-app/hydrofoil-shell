@@ -1,5 +1,11 @@
 # @hydrofoil/shell-core
 
+## 0.1.1
+
+### Patch Changes
+
+- c84ad44: Do not package .ts sources
+
 ## 0.1.0
 
 ### Minor Changes
