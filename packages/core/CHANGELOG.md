@@ -1,5 +1,11 @@
 # @hydrofoil/shell-core
 
+## 0.0.1
+
+### Patch Changes
+
+- fbb7cd5: Extract core package and make `@hydrofoil/shell` a meta package
+
 ## 0.1.1
 
 ### Patch Changes
