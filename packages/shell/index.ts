@@ -1,6 +1,7 @@
 import * as rdx from '@captaincodeman/rdx'
 import { Models } from '@hydrofoil/shell-core/store'
 
+export { createModel } from '@captaincodeman/rdx'
 export { core } from '@hydrofoil/shell-core/core'
 export { operation } from '@hydrofoil/shell-operations'
 export { default as resource } from '@hydrofoil/shell-resources'
