@@ -1,7 +1,5 @@
-import type { Plugin } from '@captaincodeman/rdx'
 import url from 'url-state'
 import linkHijacker from '@mapbox/link-hijacker'
-import type { Model } from '@hydrofoil/shell-core/store'
 
 interface Options {
   appPath?: string
@@ -11,23 +9,13 @@ interface RoutingDispatch {
   resource(resource: string): void
 }
 
-interface Effects {
-  goTo(href: string): void
-}
-
-interface RoutingState {
-  resource: string
-}
-
 const reducers = {
   resource(state: any, resource: string) {
     return { ...state, resource }
   },
 }
 
-type RoutingModel = Model<RoutingState, typeof reducers, Effects>
-
-export const routing: (params: Options) => Plugin<RoutingModel> = ({ appPath = '/' } = {}) => {
+export const routing = ({ appPath = '/' }: Options = {}) => {
   const appPathPattern = new RegExp(`^${appPath}`)
 
   const getResourcePath = (href: string) => {
@@ -56,7 +44,7 @@ export const routing: (params: Options) => Plugin<RoutingModel> = ({ appPath = '
       reducers,
       effects: () => ({ goTo }),
     },
-    onStore(store) {
+    onStore(store: any) {
       const dispatch = store.dispatch.routing as unknown as RoutingDispatch
 
       function urlChanged() {
