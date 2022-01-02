@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/shell",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "main": "index.js",
   "description": "Metapackge for bootstrapping a hydrofoil shell",
@@ -15,9 +15,9 @@
     "prepack": "tsc"
   },
   "dependencies": {
-    "@hydrofoil/shell-core": "^0.0.0",
-    "@hydrofoil/shell-operations": "^0.1.0",
-    "@hydrofoil/shell-resources": "^0.1.0",
-    "@hydrofoil/shell-routing": "^0.1.0"
+    "@hydrofoil/shell-core": "^0.0.1",
+    "@hydrofoil/shell-operations": "^0.1.1",
+    "@hydrofoil/shell-resources": "^0.1.1",
+    "@hydrofoil/shell-routing": "^0.1.1"
   }
 }
