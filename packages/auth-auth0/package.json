@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/shell-auth-auth0",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
   "license": "MIT",
@@ -15,8 +15,8 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.19.3",
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@hydrofoil/shell": "^0.1.0",
-    "@hydrofoil/shell-auth": "^0.1.0",
+    "@hydrofoil/shell": "^0.1.1",
+    "@hydrofoil/shell-auth": "^0.2.0",
     "@rdfjs/types": "^1.0.1"
   }
 }
