@@ -15,6 +15,7 @@
     "prepack": "tsc"
   },
   "dependencies": {
+    "@captaincodeman/rdx": "^1.0.0-rc.9",
     "@hydrofoil/shell-core": "^0.0.1",
     "@hydrofoil/shell-operations": "^0.1.1",
     "@hydrofoil/shell-resources": "^0.1.1",

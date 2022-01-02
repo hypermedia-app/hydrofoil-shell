@@ -24,7 +24,7 @@ export const operation = createModel({
   effects,
 })
 
-declare module '@captaincodeman/rdx/typings/models' {
+declare module '@hydrofoil/shell-core/store' {
   interface Models {
     operation: Model<OperationsState, typeof reducers, ReturnType<typeof effects>>
   }

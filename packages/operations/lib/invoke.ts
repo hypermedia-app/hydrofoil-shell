@@ -1,7 +1,7 @@
 import type { RuntimeOperation } from 'alcaeus'
 import { GraphPointer } from 'clownface'
 import { turtle } from '@tpluscode/rdf-string'
-import { Store } from '@hydrofoil/shell-core/store'
+import type { Store } from '@hydrofoil/shell'
 
 export interface InvokeOperation {
   operation: RuntimeOperation

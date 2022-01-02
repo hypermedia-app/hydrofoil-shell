@@ -25,16 +25,9 @@ const reducers = {
   },
 }
 
-declare module '@captaincodeman/rdx/typings/models' {
-  interface Models {
-    routing: Model<RoutingState,
-    typeof reducers,
-    Effects
-    >
-  }
-}
+type RoutingModel = Model<RoutingState, typeof reducers, Effects>
 
-export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => {
+export const routing: (params: Options) => Plugin<RoutingModel> = ({ appPath = '/' } = {}) => {
   const appPathPattern = new RegExp(`^${appPath}`)
 
   const getResourcePath = (href: string) => {
@@ -57,7 +50,9 @@ export const routing: (params: Options) => Plugin = ({ appPath = '/' } = {}) => 
 
   return {
     model: {
-      state: {},
+      state: {
+        resource: window.location.href,
+      },
       reducers,
       effects: () => ({ goTo }),
     },

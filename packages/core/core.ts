@@ -2,7 +2,8 @@ import { createModel } from '@captaincodeman/rdx'
 import { HydraClient } from 'alcaeus/alcaeus'
 import type { GraphPointer } from 'clownface'
 import type { Term } from '@rdfjs/types'
-import type { Store, Model } from './store.js'
+import type { Store } from '@hydrofoil/shell'
+import type { Model } from './store.js'
 
 export interface CoreState {
   rootResource?: {
@@ -17,7 +18,7 @@ export interface CoreState {
   client?: HydraClient
 }
 
-declare module '@captaincodeman/rdx/typings/models' {
+declare module '@hydrofoil/shell-core/store' {
   interface Models {
     core: Model<CoreState, typeof reducers, ReturnType<typeof effects>>
   }

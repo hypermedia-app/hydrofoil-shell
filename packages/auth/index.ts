@@ -18,7 +18,7 @@ type R = typeof reducers
 export interface Reducers extends R {
 }
 
-declare module '@captaincodeman/rdx/typings/models' {
+declare module '@hydrofoil/shell-core/store' {
   interface Models {
     auth: Model<AuthState, Reducers, Effects>
   }

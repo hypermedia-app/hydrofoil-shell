@@ -1,5 +1,6 @@
 import { createModel } from '@captaincodeman/rdx'
-import { Model, Store } from '@hydrofoil/shell-core/store'
+import type { Model } from '@hydrofoil/shell-core/store'
+import type { Store } from '@hydrofoil/shell'
 import { Term } from '@rdfjs/types'
 import type { ResponseWrapper } from 'alcaeus/ResponseWrapper'
 import type { ResourceRepresentation } from 'alcaeus/ResourceRepresentation'
@@ -89,7 +90,7 @@ export default createModel({
   effects,
 })
 
-declare module '@captaincodeman/rdx/typings/models' {
+declare module '@hydrofoil/shell-core/store' {
   interface Models {
     resource: Model<ResourceState, typeof reducers, ReturnType<typeof effects>>
   }

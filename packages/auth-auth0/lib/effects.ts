@@ -1,5 +1,5 @@
 import { NamedNode } from '@rdfjs/types'
-import type { Store } from '@hydrofoil/shell-core/store'
+import type { Store } from '@hydrofoil/shell'
 import type { Options } from '..'
 
 export function prepareEffects(options: Options) {

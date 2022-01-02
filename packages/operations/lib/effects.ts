@@ -1,4 +1,4 @@
-import { Store } from '@hydrofoil/shell-core/store'
+import type { Store } from '@hydrofoil/shell'
 import { invoke } from './invoke.js'
 import { completed } from './completed.js'
 
