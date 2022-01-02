@@ -1,0 +1,5 @@
+export { core } from '@hydrofoil/shell-core/core'
+export { operation } from '@hydrofoil/shell-operations'
+export { default as resource } from '@hydrofoil/shell-resources'
+export { routing } from '@hydrofoil/shell-routing'
+export { create } from '@hydrofoil/shell-core/store'

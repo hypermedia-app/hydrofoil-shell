@@ -1,5 +1,4 @@
 import * as rdx from '@captaincodeman/rdx'
-import { core } from './core'
 
 type ReducerFns = Record<any, any>
 type EffectFns = Record<any, any>
@@ -17,10 +16,8 @@ export type DispatchParam<
 > = Parameters<ReturnType<Store['getDispatch']>[M][D]>[0]
 
 export function create<T extends Record<string, rdx.Model>>(
-  models: Omit<rdx.Models, 'core'> & T,
+  models:rdx.Models & T,
   plugins?: rdx.Plugins,
 ) {
-  const allModels = { ...models, core } as any as rdx.Models
-
-  return rdx.createStore({ models: allModels, plugins })
+  return rdx.createStore({ models, plugins })
 }

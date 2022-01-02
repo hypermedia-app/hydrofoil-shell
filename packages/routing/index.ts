@@ -1,7 +1,7 @@
 import type { Plugin } from '@captaincodeman/rdx'
 import url from 'url-state'
 import linkHijacker from '@mapbox/link-hijacker'
-import type { Model } from '@hydrofoil/shell/store'
+import type { Model } from '@hydrofoil/shell-core/store'
 
 interface Options {
   appPath?: string

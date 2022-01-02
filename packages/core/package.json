@@ -1,22 +1,23 @@
 {
-  "name": "@hydrofoil/shell-auth-auth0",
-  "version": "0.2.0",
+  "name": "@hydrofoil/shell-core",
+  "version": "0.0.0",
   "type": "module",
   "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hypermedia-app/hydrofoil-shell.git",
-    "directory": "packages/auth-auth0"
+    "directory": "packages/core"
   },
   "scripts": {
     "prepack": "tsc"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.19.3",
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@hydrofoil/shell-core": "^0.0.0",
-    "@hydrofoil/shell-auth": "^0.2.0",
-    "@rdfjs/types": "^1.0.1"
+    "alcaeus": "^2.1.2"
+  },
+  "exports": {
+    "./store": "./store.js",
+    "./core": "./core.js"
   }
 }

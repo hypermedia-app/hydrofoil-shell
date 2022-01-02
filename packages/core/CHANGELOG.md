@@ -1,4 +1,4 @@
-# @hydrofoil/shell
+# @hydrofoil/shell-core
 
 ## 0.1.1
 

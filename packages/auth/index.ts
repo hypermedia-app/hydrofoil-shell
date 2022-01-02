@@ -1,4 +1,4 @@
-import { Model } from '@hydrofoil/shell/store'
+import { Model } from '@hydrofoil/shell-core/store'
 import type { NamedNode } from '@rdfjs/types'
 import reducers from './lib/reducers.js'
 

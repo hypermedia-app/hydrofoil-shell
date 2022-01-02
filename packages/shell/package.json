@@ -2,6 +2,8 @@
   "name": "@hydrofoil/shell",
   "version": "0.1.1",
   "type": "module",
+  "main": "index.js",
+  "description": "Metapackge for bootstrapping a hydrofoil shell",
   "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
   "license": "MIT",
   "repository": {
@@ -13,10 +15,9 @@
     "prepack": "tsc"
   },
   "dependencies": {
-    "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "alcaeus": "^2.1.2"
-  },
-  "exports": {
-    "./store": "./store.js"
+    "@hydrofoil/shell-core": "^0.0.0",
+    "@hydrofoil/shell-operations": "^0.1.0",
+    "@hydrofoil/shell-resources": "^0.1.0",
+    "@hydrofoil/shell-routing": "^0.1.0"
   }
 }

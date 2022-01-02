@@ -1,4 +1,4 @@
-import { Store } from '@hydrofoil/shell/store'
+import { Store } from '@hydrofoil/shell-core/store'
 import type { RuntimeOperation } from 'alcaeus'
 import type { ResponseWrapper } from 'alcaeus/ResponseWrapper'
 import type { ResourceRepresentation } from 'alcaeus/ResourceRepresentation'

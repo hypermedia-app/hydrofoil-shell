@@ -1,5 +1,5 @@
 import { createModel } from '@captaincodeman/rdx'
-import { Model, Store } from '@hydrofoil/shell/store'
+import { Model, Store } from '@hydrofoil/shell-core/store'
 import { Term } from '@rdfjs/types'
 import type { ResponseWrapper } from 'alcaeus/ResponseWrapper'
 import type { ResourceRepresentation } from 'alcaeus/ResourceRepresentation'
