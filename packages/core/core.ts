@@ -3,6 +3,7 @@ import { HydraClient } from 'alcaeus/alcaeus'
 import type { GraphPointer } from 'clownface'
 import type { Term } from '@rdfjs/types'
 import type { Store } from '@hydrofoil/shell'
+import type { RdfResource } from 'alcaeus'
 import type { Model } from './store.js'
 
 export interface CoreState {
@@ -13,7 +14,7 @@ export interface CoreState {
   contentResource?: {
     id: Term
     pointer?: GraphPointer
-  }
+  } | RdfResource
   entrypoint?: GraphPointer
   client?: HydraClient
 }
@@ -24,7 +25,7 @@ declare module '@hydrofoil/shell-core/store' {
   }
 }
 
-interface SetContentResource {
+type SetContentResource = RdfResource | {
   id?: Term
   pointer: GraphPointer
 }
@@ -44,7 +45,15 @@ const reducers = {
       },
     }
   },
-  setContentResource(state: CoreState, { id, pointer }: SetContentResource): CoreState {
+  setContentResource(state: CoreState, arg: SetContentResource): CoreState {
+    if ('types' in arg) {
+      return {
+        ...state,
+        contentResource: arg,
+      }
+    }
+
+    const { id, pointer } = arg
     return {
       ...state,
       contentResource: {
