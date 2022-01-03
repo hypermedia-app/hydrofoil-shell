@@ -1,5 +1,11 @@
 # @hydrofoil/shell-core
 
+## 0.1.2
+
+### Patch Changes
+
+- 0d8caf0: Preserve entire RdfResource when set to core state
+
 ## 0.1.1
 
 ### Patch Changes
