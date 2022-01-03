@@ -1,5 +1,13 @@
 # @hydrofoil/shell
 
+## 0.3.2
+
+### Patch Changes
+
+- fc446f3: Export model factory from rdx
+- Updated dependencies [0d8caf0]
+  - @hydrofoil/shell-core@0.1.2
+
 ## 0.3.1
 
 ### Patch Changes
