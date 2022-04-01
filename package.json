@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.5",
-    "@changesets/cli": "^2.19.0",
+    "@changesets/cli": "^2.22.0",
     "@open-wc/eslint-config": "^7.0.0",
     "@tpluscode/eslint-config": "^0.3.0",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
