@@ -9,7 +9,7 @@ export interface AuthState {
 }
 
 export interface Effects {
-  logIn({ returnTo }: { returnTo?: string | NamedNode }): Promise<void>
+  logIn(arg?: { returnTo?: string | NamedNode }): Promise<void>
   logOut(): Promise<void>
 }
 
