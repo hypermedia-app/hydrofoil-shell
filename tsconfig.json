@@ -11,7 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
