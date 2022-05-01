@@ -1,5 +1,11 @@
 # @hydrofoil/shell-routing
 
+## 0.2.2
+
+### Patch Changes
+
+- fd626f9: Remove source maps
+
 ## 0.2.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @hydrofoil/shell-operations
 
+## 0.2.2
+
+### Patch Changes
+
+- fd626f9: Remove source maps
+- Updated dependencies [fd626f9]
+  - @hydrofoil/shell-core@0.1.3
+
 ## 0.2.1
 
 ### Patch Changes
