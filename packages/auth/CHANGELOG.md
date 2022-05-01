@@ -1,5 +1,15 @@
 # @hydrofoil/shell-auth
 
+## 0.3.2
+
+### Patch Changes
+
+- ae4daa7: Type declaration would prevent parameterless implementation of `logIn` effect
+- d313bc4: Cannot build project without Auth0 package due to incorrectly inferred type
+- fd626f9: Remove source maps
+- Updated dependencies [fd626f9]
+  - @hydrofoil/shell-core@0.1.3
+
 ## 0.3.1
 
 ### Patch Changes

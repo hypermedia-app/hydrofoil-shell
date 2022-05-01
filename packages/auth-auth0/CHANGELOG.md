@@ -1,5 +1,16 @@
 # @hydrofoil/shell-auth-auth0
 
+## 0.3.2
+
+### Patch Changes
+
+- fd626f9: Remove source maps
+- Updated dependencies [ae4daa7]
+- Updated dependencies [d313bc4]
+- Updated dependencies [fd626f9]
+  - @hydrofoil/shell-auth@0.3.2
+  - @hydrofoil/shell-core@0.1.3
+
 ## 0.3.1
 
 ### Patch Changes

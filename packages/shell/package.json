@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/shell",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "module",
   "main": "index.js",
   "description": "Metapackge for bootstrapping a hydrofoil shell",
@@ -22,9 +22,9 @@
   },
   "dependencies": {
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@hydrofoil/shell-core": "^0.1.2",
-    "@hydrofoil/shell-operations": "^0.2.1",
-    "@hydrofoil/shell-resources": "^0.2.1",
-    "@hydrofoil/shell-routing": "^0.2.1"
+    "@hydrofoil/shell-core": "^0.1.3",
+    "@hydrofoil/shell-operations": "^0.2.2",
+    "@hydrofoil/shell-resources": "^0.2.2",
+    "@hydrofoil/shell-routing": "^0.2.2"
   }
 }
