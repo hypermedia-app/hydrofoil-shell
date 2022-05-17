@@ -3,6 +3,7 @@ import linkHijacker from '@mapbox/link-hijacker'
 
 interface Options {
   appPath?: string
+  pathPrefix?: string
 }
 
 interface RoutingDispatch {
@@ -15,7 +16,7 @@ const reducers = {
   },
 }
 
-export const routing = ({ appPath = '/' }: Options = {}) => {
+export const routing = ({ appPath = '/', pathPrefix = '' }: Options = {}) => {
   const appPathPattern = new RegExp(`^${appPath}`)
 
   const getResourcePath = (href: string) => {
@@ -49,7 +50,9 @@ export const routing = ({ appPath = '/' }: Options = {}) => {
 
       function urlChanged() {
         const resource = new URL(url.href)
-        resource.pathname = resource.pathname.replace(appPathPattern, '')
+        resource.pathname = resource.pathname
+          .replace(appPathPattern, pathPrefix)
+          .replace(/\/$/, '')
         dispatch.resource(resource.href)
       }
 
