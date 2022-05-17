@@ -1,5 +1,11 @@
 # @hydrofoil/shell-routing
 
+## 0.2.3
+
+### Patch Changes
+
+- 514215d: Optional parameter to add a resource prefix
+
 ## 0.2.2
 
 ### Patch Changes
