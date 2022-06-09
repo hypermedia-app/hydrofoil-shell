@@ -18,10 +18,11 @@ const reducers = {
 
 export const routing = ({ appPath = '/', pathPrefix = '' }: Options = {}) => {
   const appPathPattern = new RegExp(`^${appPath}`)
+  const prefixPattern = new RegExp(`^${pathPrefix}`)
 
   const getResourcePath = (href: string) => {
     const resourceUrl = new URL(href)
-    const path = resourceUrl.pathname
+    const path = resourceUrl.pathname.replace(prefixPattern, '')
 
     if (url.hostname === resourceUrl.hostname) {
       return `${appPath}${path}${resourceUrl.search}`
