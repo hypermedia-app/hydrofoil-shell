@@ -1,5 +1,11 @@
 # @hydrofoil/shell-routing
 
+## 0.2.4
+
+### Patch Changes
+
+- 3c16b00: Remove path prefix from navigated path
+
 ## 0.2.3
 
 ### Patch Changes
