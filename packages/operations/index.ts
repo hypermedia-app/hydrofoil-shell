@@ -8,12 +8,22 @@ import TermMap from '@rdf-esm/term-map'
 import { effects } from './lib/effects.js'
 import reducers from './lib/reducers.js'
 
-type OperationResult = { loading: true }
-| { success: false; response?: ResponseWrapper; error?: Error }
-| { success: true; response: ResponseWrapper; representation?: ResourceRepresentation }
+interface OperationResult<Loading, Success, Response, Err, Representation> {
+  loading: Loading
+  success: Success
+  response: Response
+  error: Err
+  representation: Representation
+}
+
+export type UndefinedResult = OperationResult<true, undefined, undefined, undefined, undefined>
+// eslint-disable-next-line max-len
+export type FailureResult = OperationResult<false, false, ResponseWrapper | undefined, Error | undefined, undefined>
+// eslint-disable-next-line max-len
+export type SuccessResult = OperationResult<false, true, ResponseWrapper, undefined, ResourceRepresentation | undefined>
 
 export interface OperationsState {
-  operations: Map<Term, OperationResult>
+  operations: Map<Term, UndefinedResult | SuccessResult | FailureResult>
 }
 
 export const operation = createModel({

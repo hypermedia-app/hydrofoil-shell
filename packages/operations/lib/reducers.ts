@@ -2,7 +2,7 @@ import type { RuntimeOperation } from 'alcaeus'
 import type { Error } from '@rdfine/hydra/lib/Error'
 import type { ResponseWrapper } from 'alcaeus/ResponseWrapper'
 import type { ResourceRepresentation } from 'alcaeus/ResourceRepresentation'
-import type { OperationsState } from '..'
+import type { FailureResult, OperationsState, SuccessResult } from '..'
 
 export interface OperationCompleted {
   operation: RuntimeOperation
@@ -18,17 +18,31 @@ export interface OperationSucceeded extends OperationCompleted {
   representation?: ResourceRepresentation
 }
 
+const nullResult = {
+  loading: false as const,
+  success: undefined,
+  response: undefined,
+  error: undefined,
+  representation: undefined,
+}
+
 export default {
   startLoading(state: OperationsState, operation: RuntimeOperation) {
-    state.operations.set(operation.id, { loading: true })
+    state.operations.set(operation.id, { ...nullResult, loading: true })
     return state
   },
   failed(state: OperationsState, { operation, error, response }: OperationFailed) {
-    state.operations.set(operation.id, { success: false, error, response })
+    const result: FailureResult = {
+      ...nullResult, success: false, error, response,
+    }
+    state.operations.set(operation.id, result)
     return state
   },
   succeeded(state: OperationsState, { operation, response, representation }: OperationSucceeded) {
-    state.operations.set(operation.id, { success: true, response, representation })
+    const result: SuccessResult = {
+      ...nullResult, success: true, response, representation,
+    }
+    state.operations.set(operation.id, result)
     return state
   },
 }
