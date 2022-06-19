@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/shell-operations",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "description": "Store model to manage hydra operations",
   "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",

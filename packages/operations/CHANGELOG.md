@@ -1,5 +1,11 @@
 # @hydrofoil/shell-operations
 
+## 0.2.3
+
+### Patch Changes
+
+- fc635ed: Unify interfaces of `OperationResult` union
+
 ## 0.2.2
 
 ### Patch Changes
