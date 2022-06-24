@@ -37,19 +37,23 @@ export function prepareEffects(options: Options) {
 
         dispatch.auth.setClient({ client, redirected: false })
       },
-      async logIn({ returnTo }: { returnTo?: string | NamedNode }) {
+      logIn() {
+        const {
+          core: { contentResource },
+        } = store.getState()
+
+        dispatch.auth.logInWithRedirect({ returnTo: contentResource?.id.value })
+      },
+      async logInWithRedirect({ returnTo }: { returnTo?: string | NamedNode }) {
         const {
           auth: { auth0 },
-          core: { contentResource },
         } = store.getState()
 
         let resourceId: string | undefined
         if (typeof returnTo === 'string') {
           resourceId = returnTo
         } else {
-          resourceId = returnTo && 'termType' in returnTo
-            ? returnTo.value
-            : contentResource?.id.value
+          resourceId = returnTo?.value
         }
 
         await auth0?.loginWithRedirect({
@@ -58,10 +62,13 @@ export function prepareEffects(options: Options) {
           },
         })
       },
-      async logOut() {
+      async logOutWithRedirect(returnTo: string | undefined) {
         const { auth0 } = store.getState().auth
-        await auth0?.logout()
+        await auth0?.logout({ returnTo })
         dispatch.auth.isAuthenticated(false)
+      },
+      logOut() {
+        dispatch.auth.logOutWithRedirect(undefined)
       },
     }
   }
