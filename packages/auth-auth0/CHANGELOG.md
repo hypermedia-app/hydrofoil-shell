@@ -1,5 +1,11 @@
 # @hydrofoil/shell-auth-auth0
 
+## 0.3.3
+
+### Patch Changes
+
+- af3bca6: Separate dispatch methods to log in/out with or without a redirect
+
 ## 0.3.2
 
 ### Patch Changes
