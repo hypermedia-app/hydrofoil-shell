@@ -1,5 +1,11 @@
 # @hydrofoil/shell-routing
 
+## 0.2.5
+
+### Patch Changes
+
+- d346645: Make `appPath` part of the state
+
 ## 0.2.4
 
 ### Patch Changes
