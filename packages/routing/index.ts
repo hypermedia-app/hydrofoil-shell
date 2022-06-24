@@ -41,6 +41,7 @@ export const routing = ({ appPath = '/', pathPrefix = '' }: Options = {}) => {
   return {
     model: {
       state: {
+        appPath,
         resource: window.location.href,
       },
       reducers,
