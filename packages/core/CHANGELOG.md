@@ -1,5 +1,11 @@
 # @hydrofoil/shell-core
 
+## 0.1.4
+
+### Patch Changes
+
+- 753289a: Updated `@tpluscode/rdf-ns-builders` to v2
+
 ## 0.1.3
 
 ### Patch Changes
