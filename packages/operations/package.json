@@ -24,8 +24,8 @@
     "@hydrofoil/shell-core": "^0.1.3",
     "@rdfjs/types": "^1.0.1",
     "@rdf-esm/term-map": "^0.5.1",
-    "@tpluscode/rdf-ns-builders": "^1",
-    "@tpluscode/rdf-string": "^0.2.25",
+    "@tpluscode/rdf-ns-builders": "^2.0.1",
+    "@tpluscode/rdf-string": "^0.2.26",
     "clownface": "^1.4.0"
   },
   "devDependencies": {

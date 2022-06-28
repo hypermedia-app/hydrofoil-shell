@@ -2,7 +2,7 @@ import type { Store } from '@hydrofoil/shell'
 import type { RuntimeOperation } from 'alcaeus'
 import type { ResponseWrapper } from 'alcaeus/ResponseWrapper'
 import type { ResourceRepresentation } from 'alcaeus/ResourceRepresentation'
-import { hydra } from '@tpluscode/rdf-ns-builders/strict'
+import { hydra } from '@tpluscode/rdf-ns-builders'
 import type { Error } from '@rdfine/hydra/lib/Error'
 
 export interface OperationCompleted {

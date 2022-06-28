@@ -8,7 +8,7 @@ import TermMap from '@rdf-esm/term-map'
 import { NamedNode } from 'rdf-js'
 import { namedNode } from '@rdf-esm/data-model'
 import type { Resource, Error } from 'alcaeus'
-import { hydra } from '@tpluscode/rdf-ns-builders/strict'
+import { hydra } from '@tpluscode/rdf-ns-builders'
 import reducers from './lib/reducers.js'
 
 type RepresentationState = {
