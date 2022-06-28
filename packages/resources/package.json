@@ -1,6 +1,6 @@
 {
   "name": "@hydrofoil/shell-resources",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "description": "Store model to manage dereferenced resources",
   "author": "Tomasz Pluskiewicz <awesome@hypermedia.app>",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@hydrofoil/shell-core": "^0.1.3",
+    "@hydrofoil/shell-core": "^0.1.4",
     "@rdf-esm/data-model": "^0.5.4",
     "@rdf-esm/term-map": "^0.5.1",
     "@rdfjs/types": "^1.0.1",
