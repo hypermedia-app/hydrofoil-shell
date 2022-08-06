@@ -1,5 +1,11 @@
 # @hydrofoil/shell-auth
 
+## 0.3.3
+
+### Patch Changes
+
+- ef01244: log-in and log-out method should be allowed to be non-async
+
 ## 0.3.2
 
 ### Patch Changes
