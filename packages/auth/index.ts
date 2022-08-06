@@ -9,8 +9,8 @@ export interface AuthState {
 }
 
 export interface Effects {
-  logIn(arg?: { returnTo?: string | NamedNode }): Promise<void>
-  logOut(): Promise<void>
+  logIn(arg?: { returnTo?: string | NamedNode }): Promise<void> | void
+  logOut(): Promise<void> | void
 }
 
 type R = typeof reducers
