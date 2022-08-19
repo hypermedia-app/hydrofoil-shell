@@ -25,7 +25,7 @@ export const routing = ({ appPath = '/', pathPrefix = '' }: Options = {}) => {
     const path = resourceUrl.pathname.replace(prefixPattern, '')
 
     if (url.hostname === resourceUrl.hostname) {
-      return `${appPath}${path}${resourceUrl.search}`
+      return `${appPath}${path}${resourceUrl.search}${resourceUrl.hash}`
     }
     return `${appPath}/${href}`
   }
