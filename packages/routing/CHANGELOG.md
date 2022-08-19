@@ -1,5 +1,11 @@
 # @hydrofoil/shell-routing
 
+## 0.2.6
+
+### Patch Changes
+
+- 5bf52ca: Preserve hash fragment when routing changes
+
 ## 0.2.5
 
 ### Patch Changes
