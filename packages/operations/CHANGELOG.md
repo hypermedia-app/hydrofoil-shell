@@ -1,5 +1,11 @@
 # @hydrofoil/shell-operations
 
+## 0.2.5
+
+### Patch Changes
+
+- a830b2c: Pass the original payload to operation completion callback
+
 ## 0.2.4
 
 ### Patch Changes
