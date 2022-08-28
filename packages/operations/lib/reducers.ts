@@ -2,9 +2,10 @@ import type { RuntimeOperation } from 'alcaeus'
 import type { Error } from '@rdfine/hydra/lib/Error'
 import type { ResponseWrapper } from 'alcaeus/ResponseWrapper'
 import type { ResourceRepresentation } from 'alcaeus/ResourceRepresentation'
-import type { FailureResult, OperationsState, SuccessResult } from '..'
+import type { FailureResult, OperationsState, Payload, SuccessResult } from '..'
 
 export interface OperationCompleted {
+  payload: Payload
   operation: RuntimeOperation
 }
 

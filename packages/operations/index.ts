@@ -5,6 +5,7 @@ import { createModel } from '@captaincodeman/rdx'
 import { Model } from '@hydrofoil/shell-core/store'
 import { Term } from '@rdfjs/types'
 import TermMap from '@rdf-esm/term-map'
+import { GraphPointer } from 'clownface'
 import { effects } from './lib/effects.js'
 import reducers from './lib/reducers.js'
 
@@ -25,6 +26,8 @@ export type SuccessResult = OperationResult<false, true, ResponseWrapper, undefi
 export interface OperationsState {
   operations: Map<Term, UndefinedResult | SuccessResult | FailureResult>
 }
+
+export type Payload = GraphPointer
 
 export const operation = createModel({
   state: <OperationsState>{

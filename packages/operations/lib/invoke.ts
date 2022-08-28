@@ -1,11 +1,11 @@
 import type { RuntimeOperation } from 'alcaeus'
-import { GraphPointer } from 'clownface'
 import { turtle } from '@tpluscode/rdf-string'
 import type { Store } from '@hydrofoil/shell'
+import type { Payload } from '../index'
 
 export interface InvokeOperation {
   operation: RuntimeOperation
-  payload: GraphPointer
+  payload: Payload
 }
 
 export function invoke(store: Store) {
@@ -18,6 +18,6 @@ export function invoke(store: Store) {
       'content-type': 'text/turtle',
     })
 
-    dispatch.operation.completed({ operation, ...response })
+    dispatch.operation.completed({ payload, operation, ...response })
   }
 }
