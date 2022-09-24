@@ -6,15 +6,17 @@ import type { Payload } from '../index'
 export interface InvokeOperation {
   operation: RuntimeOperation
   payload: Payload
+  headers?: HeadersInit
 }
 
 export function invoke(store: Store) {
   const dispatch = store.getDispatch()
 
-  return async ({ operation, payload }: InvokeOperation) => {
+  return async ({ operation, payload, headers }: InvokeOperation) => {
     dispatch.operation.startLoading(operation)
 
     const response = await operation.invoke(turtle`${payload.dataset}`.toString(), {
+      ...headers,
       'content-type': 'text/turtle',
     })
 
