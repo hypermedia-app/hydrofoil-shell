@@ -1,5 +1,11 @@
 # @hydrofoil/shell-operations
 
+## 0.2.6
+
+### Patch Changes
+
+- 4f65963: Additional headers can be set on operation request
+
 ## 0.2.5
 
 ### Patch Changes
