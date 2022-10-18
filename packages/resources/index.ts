@@ -77,6 +77,18 @@ function effects(store: Store) {
       }
     },
     'routing/resource': (id: string) => {
+      const newUrl = new URL(id)
+      newUrl.hash = ''
+      const currentId = store.getState().core.contentResource?.id.value
+      if (currentId) {
+        const currentUrl = new URL(currentId)
+        currentUrl.hash = ''
+
+        if (currentUrl.toString() === newUrl.toString()) {
+          return
+        }
+      }
+
       dispatch.resource.load(id)
     },
   }
