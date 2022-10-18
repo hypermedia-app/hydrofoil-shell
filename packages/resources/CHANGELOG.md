@@ -1,5 +1,11 @@
 # @hydrofoil/shell-resources
 
+## 0.2.4
+
+### Patch Changes
+
+- 35d624f: Do not load from API when new URL differs only in hash fragment
+
 ## 0.2.3
 
 ### Patch Changes
